@@ -42,12 +42,9 @@
 <script type="text/javascript">
 (function () {
   function sendHeight() {
-    var height = Math.max(
-      document.body.scrollHeight,
-      document.documentElement.scrollHeight,
-      document.body.offsetHeight,
-      document.documentElement.offsetHeight
-    );
+    var wrapper = document.querySelector('.cob-shabbat-wrapper');
+    if (!wrapper) return;
+    var height = Math.ceil(wrapper.getBoundingClientRect().height);
     window.parent.postMessage({ type: 'cob-shabbat-height', height: height }, '*');
   }
 
@@ -58,7 +55,8 @@
   setTimeout(sendHeight, 1500);
 
   if (window.ResizeObserver) {
-    new ResizeObserver(sendHeight).observe(document.body);
+    var wrapper = document.querySelector('.cob-shabbat-wrapper');
+    if (wrapper) new ResizeObserver(sendHeight).observe(wrapper);
   }
 })();
 </script>
