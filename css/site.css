@@ -1,5 +1,10 @@
 /* Chabad Bologna test stylesheet */
 
 .chabad-github-test {
-  outline: 3px solid currentColor;
+  background: yellow !important;
+  color: black !important;
+  border: 4px solid red !important;
+  padding: 20px !important;
+  font-size: 28px !important;
+  font-weight: bold !important;
 }
