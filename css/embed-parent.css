@@ -1,0 +1,13 @@
+/* Chabad of Bologna — ChabadOne iframe wrapper */
+body.sites-article .article-header,
+body.sites-article #co_ads_container,
+body.sites-article .content-footer,
+body.sites-article .local-navigation-quick-links{display:none!important}
+body.sites-article #co_body_container,
+body.sites-article #cco_body,
+body.sites-article #cco_body>.content,
+body.sites-article .content-area-parent,
+body.sites-article .body_wrapper.co_body{width:100%!important;max-width:none!important;float:none!important;margin:0!important;padding:0!important}
+.cob-github-frame-wrapper{width:100%;margin:0;padding:0;overflow:hidden}
+.cob-github-frame{display:block;width:100%;height:1800px;margin:0;padding:0;border:0;overflow:hidden;background:#f7f4ef}
+@media(max-width:650px){.cob-github-frame{height:2500px}}
