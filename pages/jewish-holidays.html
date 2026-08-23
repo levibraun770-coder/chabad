@@ -16,7 +16,7 @@
 .cob-holiday-card{display:flex;min-height:170px;flex-direction:column}
 .cob-holiday-card .cob-link,.cob-holiday-card .cob-coming-soon{margin-top:auto;align-self:flex-start}
 .cob-holiday-card .cob-coming-soon{display:block;padding:0;border-radius:0;background:transparent;color:#706568}
-.cob-holiday-help{margin-top:16px}\n.cob-calendar-source{margin:14px 0 0;color:#887d7f;font-size:12px;text-align:right}
+.cob-holiday-help{margin-top:16px}
 @media only screen and (max-width:700px){
   .cob-upcoming-grid{grid-template-columns:1fr}
   .cob-upcoming-title,.cob-year-title{font-size:25px}
@@ -83,9 +83,7 @@
     </a>
   </div>
 
-  <p class="cob-calendar-source" id="cob-calendar-source" hidden>Holiday dates provided by <a href="https://www.hebcal.com/" rel="noopener">Hebcal</a>.</p>
-
-  <section class="cob-section cob-note cob-holiday-help">
+<section class="cob-section cob-note cob-holiday-help">
     <h2>Celebrating in Bologna?</h2>
     <p>Contact us about holiday services, meals, local resources, or practical arrangements.</p>
     <div class="cob-actions">
@@ -99,188 +97,82 @@
   "use strict";
 
   var holidays = [
-    {
-      id: "high-holidays",
-      name: "Rosh Hashanah & Yom Kippur",
-      label: "High Holidays",
-      description: "Services, meals, registration, and practical information will be published here.",
-      learnDescription: "Rosh Hashanah, Yom Kippur, prayers, customs, and holiday resources.",
-      href: "/holidays/JewishNewYear/template_cdo/aid/36130/jewish/High-Holidays.htm",
-      start: /^Erev Rosh Hashana/,
-      end: /^Yom Kippur$/
-    },
-    {
-      id: "sukkot",
-      name: "Sukkot & Simchat Torah",
-      label: "Tishrei",
-      description: "Programs, meals, services, and practical information will be published here.",
-      learnDescription: "Programs, meals, services, and practical information.",
-      href: "/holidays/JewishNewYear/template_cdo/aid/4784/jewish/Sukkot-Simchat-Torah.htm",
-      start: /^Erev Sukkot$/,
-      end: /^Simchat Torah$/
-    },
-    {
-      id: "chanukah",
-      name: "Chanukah",
-      label: "Kislev–Tevet",
-      description: "Menorah lighting and community program information will be published here.",
-      learnDescription: "Menorah lighting, customs, stories, recipes, and holiday resources.",
-      href: "/holidays/chanukah/default_cdo/jewish/Hanukkah.htm",
-      start: /^Chanukah: 1 Candle$/,
-      end: /^Chanukah: 8th Day$/
-    },
-    {
-      id: "purim",
-      name: "Purim",
-      label: "Adar",
-      description: "Megillah readings, celebrations, and practical information will be published here.",
-      learnDescription: "Megillah, mitzvot, customs, stories, and Purim resources.",
-      href: "/library/article_cdo/aid/638040/jewish/Purim.htm",
-      start: /^Erev Purim$/,
-      end: /^Purim$/
-    },
-    {
-      id: "pesach",
-      name: "Pesach",
-      label: "Nissan",
-      description: "Seder, kosher food, holiday times, and practical information will be published here.",
-      learnDescription: "Seder, chametz, customs, recipes, and Pesach resources.",
-      href: "/holidays/passover/default_cdo/jewish/Passover-Pesach.htm",
-      start: /^Erev Pesach$/,
-      end: /^Pesach VIII$/
-    },
-    {
-      id: "shavuot",
-      name: "Shavuot",
-      label: "Sivan",
-      description: "Torah learning, services, and celebration information will be published here.",
-      learnDescription: "The giving of the Torah, customs, learning, and holiday resources.",
-      href: "/library/article_cdo/aid/111377/jewish/Shavuot.htm",
-      start: /^Erev Shavuot$/,
-      end: /^Shavuot II$/
-    }
+    {id:"high-holidays",name:"Rosh Hashanah & Yom Kippur",label:"High Holidays",description:"Services, meals, registration, and practical information will be published here.",learnDescription:"Rosh Hashanah, Yom Kippur, prayers, customs, and holiday resources.",href:"/holidays/JewishNewYear/template_cdo/aid/36130/jewish/High-Holidays.htm",month:["Tishri","Tishrei"],day:1,duration:10},
+    {id:"sukkot",name:"Sukkot & Simchat Torah",label:"Tishrei",description:"Programs, meals, services, and practical information will be published here.",learnDescription:"Programs, meals, services, and practical information.",href:"/holidays/JewishNewYear/template_cdo/aid/4784/jewish/Sukkot-Simchat-Torah.htm",month:["Tishri","Tishrei"],day:15,duration:9},
+    {id:"chanukah",name:"Chanukah",label:"Kislev–Tevet",description:"Menorah lighting and community program information will be published here.",learnDescription:"Menorah lighting, customs, stories, recipes, and holiday resources.",href:"/holidays/chanukah/default_cdo/jewish/Hanukkah.htm",month:["Kislev"],day:25,duration:8},
+    {id:"purim",name:"Purim",label:"Adar",description:"Megillah readings, celebrations, and practical information will be published here.",learnDescription:"Megillah, mitzvot, customs, stories, and Purim resources.",href:"/library/article_cdo/aid/638040/jewish/Purim.htm",month:["Adar","Adar II"],day:14,duration:1},
+    {id:"pesach",name:"Pesach",label:"Nissan",description:"Seder, kosher food, holiday times, and practical information will be published here.",learnDescription:"Seder, chametz, customs, recipes, and Pesach resources.",href:"/holidays/passover/default_cdo/jewish/Passover-Pesach.htm",month:["Nisan","Nissan"],day:15,duration:8},
+    {id:"shavuot",name:"Shavuot",label:"Sivan",description:"Torah learning, services, and celebration information will be published here.",learnDescription:"The giving of the Torah, customs, learning, and holiday resources.",href:"/library/article_cdo/aid/111377/jewish/Shavuot.htm",month:["Sivan"],day:6,duration:2}
   ];
 
-  function isoDate(date) {
-    var year = date.getFullYear();
-    var month = String(date.getMonth() + 1).padStart(2, "0");
-    var day = String(date.getDate()).padStart(2, "0");
-    return year + "-" + month + "-" + day;
+  function hebrewParts(date, formatter) {
+    var result = {};
+    formatter.formatToParts(date).forEach(function (part) {
+      if (part.type === "day" || part.type === "month" || part.type === "year") result[part.type] = part.value;
+    });
+    return {day:Number(result.day),month:result.month,year:result.year};
   }
 
-  function parseDate(value) {
-    var parts = value.slice(0, 10).split("-");
-    return new Date(Number(parts[0]), Number(parts[1]) - 1, Number(parts[2]));
+  function findOccurrence(definition, fromDate, toDate, formatter) {
+    var cursor = new Date(fromDate);
+    while (cursor <= toDate) {
+      var hp = hebrewParts(cursor, formatter);
+      if (hp.day === definition.day && definition.month.indexOf(hp.month) !== -1) {
+        var start = new Date(cursor);
+        start.setDate(start.getDate() - 1);
+        var end = new Date(start);
+        end.setDate(end.getDate() + definition.duration);
+        return {definition:definition,start:start,end:end,hyear:hp.year};
+      }
+      cursor.setDate(cursor.getDate() + 1);
+    }
+    return null;
   }
 
   function formatRange(start, end) {
     var months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
     var sameYear = start.getFullYear() === end.getFullYear();
-    var sameMonth = sameYear && start.getMonth() === end.getMonth();
-
-    if (sameMonth) {
-      return months[start.getMonth()] + " " + start.getDate() + "–" + end.getDate() + ", " + end.getFullYear();
-    }
-    if (sameYear) {
-      return months[start.getMonth()] + " " + start.getDate() + "–" + months[end.getMonth()] + " " + end.getDate() + ", " + end.getFullYear();
-    }
-    return months[start.getMonth()] + " " + start.getDate() + ", " + start.getFullYear() + "–" + months[end.getMonth()] + " " + end.getDate() + ", " + end.getFullYear();
-  }
-
-  function hebrewYear(item) {
-    var match = item && item.hdate && item.hdate.match(/(\d{4})$/);
-    return match ? match[1] : "";
-  }
-
-  function findOccurrence(definition, items) {
-    var startItem = null;
-    var endItem = null;
-    var i;
-
-    for (i = 0; i < items.length; i += 1) {
-      if (!startItem && definition.start.test(items[i].title)) {
-        startItem = items[i];
-      }
-      if (startItem && definition.end.test(items[i].title) && parseDate(items[i].date) >= parseDate(startItem.date)) {
-        endItem = items[i];
-        break;
-      }
-    }
-
-    if (!startItem || !endItem) {
-      return null;
-    }
-
-    return {
-      definition: definition,
-      start: parseDate(startItem.date),
-      end: parseDate(endItem.date),
-      hyear: hebrewYear(endItem)
-    };
+    if (sameYear && start.getMonth() === end.getMonth()) return months[start.getMonth()]+" "+start.getDate()+"–"+end.getDate()+", "+end.getFullYear();
+    if (sameYear) return months[start.getMonth()]+" "+start.getDate()+"–"+months[end.getMonth()]+" "+end.getDate()+", "+end.getFullYear();
+    return months[start.getMonth()]+" "+start.getDate()+", "+start.getFullYear()+"–"+months[end.getMonth()]+" "+end.getDate()+", "+end.getFullYear();
   }
 
   function comingCard(occurrence) {
     var def = occurrence.definition;
-    return '<section class="cob-upcoming-card">' +
-      '<p class="cob-kicker" style="color:#ef8a20;">' + formatRange(occurrence.start, occurrence.end) + '</p>' +
-      '<h2>' + def.name + '</h2>' +
-      '<p class="cob-upcoming-date">' + def.label + (occurrence.hyear ? " " + occurrence.hyear : "") + '</p>' +
-      '<p>' + def.description + '</p>' +
-      '<span class="cob-coming-soon">Information coming soon</span>' +
-      '</section>';
+    return '<section class="cob-upcoming-card"><p class="cob-kicker" style="color:#ef8a20;">'+formatRange(occurrence.start,occurrence.end)+'</p><h2>'+def.name+'</h2><p class="cob-upcoming-date">'+def.label+(occurrence.hyear?" "+occurrence.hyear:"")+'</p><p>'+def.description+'</p><span class="cob-coming-soon">Information coming soon</span></section>';
   }
 
   function regularCard(def) {
-    return '<a class="cob-card cob-holiday-card" href="' + def.href + '">' +
-      '<h3>' + def.name + '</h3>' +
-      '<p>' + def.learnDescription + '</p>' +
-      '<span class="cob-link">Learn more →</span>' +
-      '</a>';
+    return '<a class="cob-card cob-holiday-card" href="'+def.href+'"><h3>'+def.name+'</h3><p>'+def.learnDescription+'</p><span class="cob-link">Learn more →</span></a>';
   }
 
-  var today = new Date();
-  today.setHours(0, 0, 0, 0);
-  var rangeStart = new Date(today);
-  var rangeEnd = new Date(today);
-  rangeStart.setDate(rangeStart.getDate() - 35);
-  rangeEnd.setDate(rangeEnd.getDate() + 450);
+  try {
+    var formatter = new Intl.DateTimeFormat("en-u-ca-hebrew",{day:"numeric",month:"long",year:"numeric"});
+    var today = new Date();
+    today.setHours(0,0,0,0);
+    var rangeStart = new Date(today);
+    var rangeEnd = new Date(today);
+    rangeStart.setDate(rangeStart.getDate()-35);
+    rangeEnd.setDate(rangeEnd.getDate()+450);
 
-  var api = "https://www.hebcal.com/hebcal?v=1&cfg=json&maj=on&min=on&i=off&start=" +
-    isoDate(rangeStart) + "&end=" + isoDate(rangeEnd);
+    var occurrences = holidays.map(function (holiday) {
+      return findOccurrence(holiday,rangeStart,rangeEnd,formatter);
+    }).filter(Boolean).filter(function (occurrence) {
+      var dayAfterEnd = new Date(occurrence.end);
+      dayAfterEnd.setDate(dayAfterEnd.getDate()+1);
+      return dayAfterEnd > today;
+    }).sort(function (a,b) {return a.start-b.start;});
 
-  fetch(api)
-    .then(function (response) {
-      if (!response.ok) {
-        throw new Error("Holiday calendar unavailable");
-      }
-      return response.json();
-    })
-    .then(function (data) {
-      var occurrences = holidays.map(function (holiday) {
-        return findOccurrence(holiday, data.items || []);
-      }).filter(Boolean).filter(function (occurrence) {
-        var dayAfterEnd = new Date(occurrence.end);
-        dayAfterEnd.setDate(dayAfterEnd.getDate() + 1);
-        return dayAfterEnd > today;
-      }).sort(function (a, b) {
-        return a.start - b.start;
-      });
-
-      if (!occurrences.length) {
-        return;
-      }
-
+    if (occurrences.length) {
       var upcoming = occurrences[0];
       document.getElementById("cob-upcoming-holiday").innerHTML = comingCard(upcoming);
-      document.getElementById("cob-other-holidays").innerHTML = holidays
-        .filter(function (holiday) { return holiday.id !== upcoming.definition.id; })
-        .map(regularCard)
-        .join("");
-      document.getElementById("cob-calendar-source").hidden = false;
-    })
-    .catch(function () {
-      /* Keep the accurate static fallback already printed in the page. */
-    });
+      document.getElementById("cob-other-holidays").innerHTML = holidays.filter(function (holiday) {
+        return holiday.id !== upcoming.definition.id;
+      }).map(regularCard).join("");
+    }
+  } catch (error) {
+    /* Keep the static fallback already printed in the page. */
+  }
 }());
 </script>
 <script src="https://levibraun770-coder.github.io/chabad/js/embed-child.js?v=20260822-11" defer></script>
