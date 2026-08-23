@@ -8,7 +8,7 @@
 <base href="https://www.chabadbologna.com/" target="_top">
 <style>
 .cob-upcoming-title,.cob-year-title{margin:24px 0 12px;color:#680019;font-family:Georgia,"Times New Roman",serif;font-size:28px;line-height:1.25}
-.cob-upcoming-grid{display:grid;grid-template-columns:1fr;gap:14px}
+.cob-upcoming-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
 .cob-upcoming-card{padding:24px;border:1px solid #e8ded2;border-left:5px solid #ef8a20;border-radius:15px;background:#fff}
 .cob-upcoming-card h2{margin:0;color:#680019}
 .cob-upcoming-date{margin:8px 0 0;color:#706568;font-weight:700}
@@ -47,17 +47,19 @@
       <p>Services, meals, registration, and practical information will be published here.</p>
       <span class="cob-coming-soon">Information coming soon</span>
     </section>
+
+    <section class="cob-upcoming-card">
+      <p class="cob-kicker" style="color:#ef8a20;">September 25–October 4, 2026</p>
+      <h2>Sukkot &amp; Simchat Torah</h2>
+      <p class="cob-upcoming-date">Tishrei 5787</p>
+      <p>Programs, meals, services, and practical information will be published here.</p>
+      <span class="cob-coming-soon">Information coming soon</span>
+    </section>
   </div>
 
   <h2 class="cob-year-title">More holidays</h2>
 
   <div class="cob-grid" id="cob-other-holidays">
-    <a class="cob-card cob-holiday-card" href="/holidays/JewishNewYear/template_cdo/aid/4784/jewish/Sukkot-Simchat-Torah.htm">
-      <h3>Sukkot &amp; Simchat Torah</h3>
-      <p>Programs, meals, services, and practical information.</p>
-      <span class="cob-link">Learn more →</span>
-    </a>
-
     <a class="cob-card cob-holiday-card" href="/holidays/chanukah/default_cdo/jewish/Hanukkah.htm">
       <h3>Chanukah</h3>
       <p>Menorah lighting and community programs.</p>
@@ -164,10 +166,21 @@
     }).sort(function (a,b) {return a.start-b.start;});
 
     if (occurrences.length) {
-      var upcoming = occurrences[0];
-      document.getElementById("cob-upcoming-holiday").innerHTML = comingCard(upcoming);
+      var upcoming = [occurrences[0]];
+      if (occurrences[0].definition.id === "high-holidays") {
+        var sukkot = occurrences.find(function (occurrence) {
+          return occurrence.definition.id === "sukkot";
+        });
+        if (sukkot) upcoming.push(sukkot);
+      }
+
+      var upcomingIds = upcoming.map(function (occurrence) {
+        return occurrence.definition.id;
+      });
+
+      document.getElementById("cob-upcoming-holiday").innerHTML = upcoming.map(comingCard).join("");
       document.getElementById("cob-other-holidays").innerHTML = holidays.filter(function (holiday) {
-        return holiday.id !== upcoming.definition.id;
+        return upcomingIds.indexOf(holiday.id) === -1;
       }).map(regularCard).join("");
     }
   } catch (error) {
