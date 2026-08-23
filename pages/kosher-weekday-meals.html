@@ -6,6 +6,22 @@
 <title>Kosher Meals in Bologna — Chabad of Bologna</title>
 <link rel="stylesheet" href="https://levibraun770-coder.github.io/chabad/css/site.css?v=20260823-3">
 <base href="https://www.chabadbologna.com/" target="_top">
+<style>
+.cob-meal-choice-title{margin:22px 0 12px;color:#680019;font-family:Georgia,"Times New Roman",serif;font-size:28px;line-height:1.25}
+.cob-meal-card{display:flex;flex-direction:column;border-top:3px solid #ef8a20}
+.cob-meal-card .cob-actions{margin-top:auto}
+.cob-meal-detail{margin:12px 0 18px;padding-top:12px;border-top:1px solid #e8ded2;color:#706568;font-size:14px;font-weight:700}
+.cob-order-process{margin-top:16px}
+.cob-order-steps{margin-top:14px}
+.cob-order-step{display:grid;grid-template-columns:36px minmax(0,1fr);gap:12px;align-items:center;padding:12px 0;border-bottom:1px solid #e8ded2}
+.cob-order-step:last-child{border-bottom:0}
+.cob-order-number{display:flex;width:34px;height:34px;align-items:center;justify-content:center;border-radius:50%;background:#fff0df;color:#680019;font-weight:700}
+.cob-order-step p{margin:0}
+.cob-kashrut{border-left:4px solid #ef8a20}
+@media only screen and (max-width:700px){
+  .cob-meal-choice-title{margin-top:18px;font-size:25px}
+}
+</style>
 </head>
 <body style="margin:0">
 <div class="cob-page">
@@ -17,36 +33,55 @@
   <header class="cob-hero">
     <p class="cob-kicker">Kosher in Bologna</p>
     <h1>Kosher Meals in Bologna</h1>
-    <p class="cob-lead">Prepared kosher meals for weekdays and Shabbat. All orders must be placed in advance.</p>
+    <p class="cob-lead">Prepared kosher meals for weekdays and Shabbat.</p>
   </header>
 
-  <section class="cob-section cob-note">
-    <h2>Ordering information</h2>
-    <p>Orders must be placed at least <strong>3 days in advance</strong>.</p>
-    <p>Disposable cutlery is included. All orders are subject to confirmation.</p>
-    <p>If an order cannot be fulfilled, you will be notified promptly and receive a full refund.</p>
-    <p>All food is prepared under the strict supervision of Rabbi Levi Braun and is certified <strong>Kosher Lamehadrin</strong>.</p>
-  </section>
+  <h2 class="cob-meal-choice-title">What would you like?</h2>
 
   <div class="cob-grid">
-    <section class="cob-card">
-      <p class="cob-kicker" style="color:#706568;">Sunday–Thursday</p>
+    <section class="cob-card cob-meal-card">
+      <p class="cob-kicker" style="color:#706568;">Sunday–Thursday · After 18:30</p>
       <h2>Weekday Kosher Meals</h2>
       <p>Pickup or delivery on weekdays after <strong>18:30</strong>.</p>
+      <p class="cob-meal-detail">Disposable cutlery included</p>
       <div class="cob-actions">
         <a class="cob-button" href="/article.asp?AID=7419841">Order Weekday Meals</a>
       </div>
     </section>
 
-    <section class="cob-card">
-      <p class="cob-kicker" style="color:#706568;">For Shabbat</p>
+    <section class="cob-card cob-meal-card">
+      <p class="cob-kicker" style="color:#706568;">Friday · After 16:00</p>
       <h2>Shabbat Food Package</h2>
       <p>Pickup or delivery on Friday after <strong>16:00</strong>.</p>
+      <p class="cob-meal-detail">Disposable cutlery included</p>
       <div class="cob-actions">
         <a class="cob-button" href="/article.asp?AID=7426805">Order a Shabbat Package</a>
       </div>
     </section>
   </div>
+
+  <section class="cob-section cob-order-process">
+    <h2>How ordering works</h2>
+    <div class="cob-order-steps">
+      <div class="cob-order-step">
+        <span class="cob-order-number">1</span>
+        <p>Choose your meal option.</p>
+      </div>
+      <div class="cob-order-step">
+        <span class="cob-order-number">2</span>
+        <p>Order at least <strong>3 days in advance</strong>.</p>
+      </div>
+      <div class="cob-order-step">
+        <span class="cob-order-number">3</span>
+        <p>We confirm availability and arrange pickup or delivery. If an order cannot be fulfilled, you will receive a full refund.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="cob-section cob-note cob-kashrut">
+    <h2>Kosher Lamehadrin</h2>
+    <p>All food is prepared under the strict supervision of Rabbi Levi Braun.</p>
+  </section>
 </main>
 </div>
 <script src="https://levibraun770-coder.github.io/chabad/js/embed-child.js?v=20260823-3" defer></script>
