@@ -3,21 +3,28 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Shabbat Parshat Ki Tavo | Chabad of Bologna</title>
-  <link rel="stylesheet" href="css/site.css?v=20260823-4" />
+  <title>Shabbat Information | Chabad of Bologna</title>
+  <link rel="stylesheet" href="css/site.css?v=20260823-5" />
   <style type="text/css">
     html,body{margin:0;padding:0;background:#f7f4ef}
     .cob-times{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:24px;position:relative;z-index:1}
     .cob-time{padding:18px 12px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.25);border-radius:13px;text-align:center}
     .cob-time-label{margin-bottom:3px;color:#f6d7c0;font-size:12px;font-weight:700;letter-spacing:.7px;text-transform:uppercase}
     .cob-time-value{color:#fff;font:700 29px/1.2 Georgia,"Times New Roman",serif}
+    .cob-schedule{width:100%;border-collapse:collapse}
+    .cob-schedule td{padding:11px 0;border-bottom:1px solid #e8ded2;vertical-align:top}
+    .cob-schedule tr:last-child td{border-bottom:0}
+    .cob-schedule-time{width:82px;padding-right:12px!important;color:#b85f16;font-weight:700;white-space:nowrap}
+    .cob-small{color:#706568;font-size:14px}
     .cob-centered{text-align:center}
     .cob-visit-note{padding:34px 28px;border-left:6px solid #f28c28;background:#fffaf3}
     .cob-visit-note h2{margin-bottom:14px}
     .cob-visit-note p{max-width:680px;margin-left:auto;margin-right:auto}
     .cob-prayer-line{color:#5b0017;font-weight:700}
+    .cob-loading{min-height:440px}
     @media(max-width:700px){
       .cob-times{grid-template-columns:1fr}
+      .cob-schedule-time{width:72px}
       .cob-visit-note{padding:28px 20px}
     }
   </style>
@@ -29,37 +36,266 @@
       <a class="cob-parent-link" href="https://www.chabadbologna.com/templates/articlecco_cdo/aid/7259960/jewish/Visitor-Info.htm" target="_top">&larr; Visitor Info</a>
     </nav>
 
-    <section class="cob-hero">
-      <p class="cob-kicker">Shabbat Times in Bologna</p>
-      <h1>Shabbat Parshat Ki Tavo</h1>
-      <p class="cob-lead">August 28–29, 2026 &middot; 15–16 Elul 5786</p>
-      <div class="cob-times">
-        <div class="cob-time">
-          <div class="cob-time-label">Candle Lighting</div>
-          <div class="cob-time-value">19:39</div>
-        </div>
-        <div class="cob-time">
-          <div class="cob-time-label">Shabbat Ends</div>
-          <div class="cob-time-value">20:45</div>
-        </div>
-      </div>
-    </section>
-
-    <section class="cob-section cob-visit-note cob-centered">
-      <p class="cob-kicker">A Note for This Shabbat</p>
-      <h2>No Communal Meals or Services This Week</h2>
-      <p>We will be in New York visiting the Rebbe, and therefore there will be no communal Shabbat meals or services at Chabad of Bologna this week.</p>
-      <p class="cob-prayer-line">We would be happy to pray for you or your loved ones while we are there.</p>
-      <div class="cob-actions" style="justify-content:center;">
-        <a class="cob-button cob-button-accent" href="https://wa.me/393498347528?text=Hello%2C%20I%20would%20like%20to%20send%20a%20name%20for%20prayer%20during%20your%20visit%20to%20the%20Rebbe." rel="noopener noreferrer" target="_blank">Send a Name for Prayer</a>
-      </div>
-    </section>
-
-    <section class="cob-section cob-centered">
-      <h2 style="margin:0;">Shabbat Shalom!</h2>
-    </section>
+    <div id="cob-weekly-content" class="cob-loading" aria-live="polite">
+      <section class="cob-hero">
+        <p class="cob-kicker">Shabbat Times in Bologna</p>
+        <h1>Loading This Week&rsquo;s Shabbat Information</h1>
+      </section>
+    </div>
   </div>
 </main>
-<script src="js/embed-child.js?v=20260823-4" type="text/javascript"></script>
+
+<script type="text/javascript">
+(function () {
+  "use strict";
+
+  var content = document.getElementById("cob-weekly-content");
+  var apiUrl = "https://www.hebcal.com/shabbat?cfg=json&geonameid=3181928&M=on&b=20&leyning=off";
+
+  /*
+   * Add date-specific exceptions here. The key is that week's Friday date.
+   * Weeks not listed automatically use the normal Bologna schedule.
+   */
+  var specialWeeks = {
+    "2026-08-28": {
+      label: "A Note for This Shabbat",
+      heading: "No Communal Meals or Services This Week",
+      message: "We will be in New York visiting the Rebbe, and therefore there will be no communal Shabbat meals or services at Chabad of Bologna this week.",
+      prayer: "We would be happy to pray for you or your loved ones while we are there.",
+      buttonText: "Send a Name for Prayer",
+      buttonUrl: "https://wa.me/393498347528?text=Hello%2C%20I%20would%20like%20to%20send%20a%20name%20for%20prayer%20during%20your%20visit%20to%20the%20Rebbe."
+    }
+  };
+
+  function escapeHtml(value) {
+    return String(value || "")
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#039;");
+  }
+
+  function twoDigits(value) {
+    return value < 10 ? "0" + value : String(value);
+  }
+
+  function localDateKey(dateValue) {
+    var date = new Date(dateValue);
+    return date.getFullYear() + "-" + twoDigits(date.getMonth() + 1) + "-" + twoDigits(date.getDate());
+  }
+
+  function displayTime(dateValue) {
+    return new Intl.DateTimeFormat("en-GB", {
+      hour: "2-digit",
+      minute: "2-digit",
+      hour12: false,
+      timeZone: "Europe/Rome"
+    }).format(new Date(dateValue));
+  }
+
+  function displayEnglishRange(fridayValue, saturdayValue) {
+    var friday = new Date(fridayValue);
+    var saturday = new Date(saturdayValue);
+    var month = new Intl.DateTimeFormat("en-US", {
+      month: "long",
+      timeZone: "Europe/Rome"
+    }).format(friday);
+    var fridayDay = new Intl.DateTimeFormat("en-US", {
+      day: "numeric",
+      timeZone: "Europe/Rome"
+    }).format(friday);
+    var saturdayDay = new Intl.DateTimeFormat("en-US", {
+      day: "numeric",
+      timeZone: "Europe/Rome"
+    }).format(saturday);
+    var year = new Intl.DateTimeFormat("en-US", {
+      year: "numeric",
+      timeZone: "Europe/Rome"
+    }).format(saturday);
+    return month + " " + fridayDay + "&ndash;" + saturdayDay + ", " + year;
+  }
+
+  function hebrewDateParts(dateValue) {
+    var parts = new Intl.DateTimeFormat("en-u-ca-hebrew", {
+      day: "numeric",
+      month: "long",
+      year: "numeric",
+      timeZone: "Europe/Rome"
+    }).formatToParts(new Date(dateValue));
+    var result = {};
+    var i;
+    for (i = 0; i < parts.length; i += 1) {
+      if (parts[i].type !== "literal") {
+        result[parts[i].type] = parts[i].value;
+      }
+    }
+    return result;
+  }
+
+  function displayHebrewRange(fridayValue, saturdayValue) {
+    var friday = hebrewDateParts(fridayValue);
+    var saturday = hebrewDateParts(saturdayValue);
+    if (friday.month === saturday.month && friday.year === saturday.year) {
+      return friday.day + "&ndash;" + saturday.day + " " + saturday.month + " " + saturday.year;
+    }
+    return friday.day + " " + friday.month + " &ndash; " + saturday.day + " " + saturday.month + " " + saturday.year;
+  }
+
+  function normalScheduleHtml() {
+    return [
+      '<section class="cob-section cob-centered">',
+        '<h2>Join Friday Night Dinner</h2>',
+        '<p>Reserve your place for Kabbalat Shabbat and the Friday night meal.</p>',
+        '<div class="cob-actions" style="justify-content:center;">',
+          '<a class="cob-button cob-button-accent" href="https://www.chabadbologna.com/templates/articlecco_cdo/aid/7418288/jewish/Friday-Night-Dinner.htm" target="_top">Reserve Friday Night Dinner</a>',
+        '</div>',
+      '</section>',
+      '<div class="cob-grid">',
+        '<section class="cob-card">',
+          '<h2>Friday Night</h2>',
+          '<table class="cob-schedule" role="presentation"><tbody>',
+            '<tr><td class="cob-schedule-time">20:00</td><td>Kabbalat Shabbat</td></tr>',
+            '<tr><td class="cob-schedule-time">&nbsp;</td><td>Shabbat Dinner</td></tr>',
+          '</tbody></table>',
+        '</section>',
+        '<section class="cob-card">',
+          '<h2>Shabbat Day</h2>',
+          '<table class="cob-schedule" role="presentation"><tbody>',
+            '<tr><td class="cob-schedule-time">10:30</td><td>Shacharit</td></tr>',
+            '<tr><td class="cob-schedule-time">(12:30)</td><td>Shabbat Lunch</td></tr>',
+            '<tr><td class="cob-schedule-time">&nbsp;</td><td>Mincha<div class="cob-small">Followed by Pirkei Avot</div></td></tr>',
+            '<tr><td class="cob-schedule-time">&nbsp;</td><td>Maariv, Havdalah and a Video of the Rebbe</td></tr>',
+          '</tbody></table>',
+        '</section>',
+      '</div>',
+      '<section class="cob-section cob-note cob-centered">',
+        '<h2>Join Services or Contact Us</h2>',
+        '<p>Contact us if you would like to join services or need more information.</p>',
+        '<div class="cob-actions" style="justify-content:center;">',
+          '<a class="cob-button" href="https://wa.me/393498347528?text=Hello%2C%20I%20would%20like%20to%20join%20Shabbat%20services%20and%20receive%20more%20information." rel="noopener noreferrer" target="_blank">Contact Us on WhatsApp</a>',
+        '</div>',
+      '</section>'
+    ].join("");
+  }
+
+  function specialScheduleHtml(special) {
+    return [
+      '<section class="cob-section cob-visit-note cob-centered">',
+        '<p class="cob-kicker">', escapeHtml(special.label), '</p>',
+        '<h2>', escapeHtml(special.heading), '</h2>',
+        '<p>', escapeHtml(special.message), '</p>',
+        '<p class="cob-prayer-line">', escapeHtml(special.prayer), '</p>',
+        '<div class="cob-actions" style="justify-content:center;">',
+          '<a class="cob-button cob-button-accent" href="', escapeHtml(special.buttonUrl), '" rel="noopener noreferrer" target="_blank">', escapeHtml(special.buttonText), '</a>',
+        '</div>',
+      '</section>'
+    ].join("");
+  }
+
+  function renderWeek(data) {
+    var items = data && data.items ? data.items : [];
+    var candles = null;
+    var parashat = null;
+    var havdalah = null;
+    var i;
+
+    for (i = 0; i < items.length; i += 1) {
+      if (items[i].category === "candles") { candles = items[i]; }
+      if (items[i].category === "parashat") { parashat = items[i]; }
+      if (items[i].category === "havdalah") { havdalah = items[i]; }
+    }
+
+    if (!candles || !parashat || !havdalah) {
+      throw new Error("Incomplete Shabbat information");
+    }
+
+    var fridayKey = localDateKey(candles.date);
+    var parshahName = String(parashat.title || "This Week").replace(/^Parashat\s+/i, "");
+    var special = specialWeeks[fridayKey];
+    var schedule = special ? specialScheduleHtml(special) : normalScheduleHtml();
+
+    content.className = "";
+    content.innerHTML = [
+      '<section class="cob-hero">',
+        '<p class="cob-kicker">Shabbat Times in Bologna</p>',
+        '<h1>Shabbat Parshat ', escapeHtml(parshahName), '</h1>',
+        '<p class="cob-lead">',
+          displayEnglishRange(candles.date, havdalah.date),
+          ' &middot; ',
+          displayHebrewRange(candles.date, havdalah.date),
+        '</p>',
+        '<div class="cob-times">',
+          '<div class="cob-time">',
+            '<div class="cob-time-label">Candle Lighting</div>',
+            '<div class="cob-time-value">', escapeHtml(displayTime(candles.date)), '</div>',
+          '</div>',
+          '<div class="cob-time">',
+            '<div class="cob-time-label">Shabbat Ends</div>',
+            '<div class="cob-time-value">', escapeHtml(displayTime(havdalah.date)), '</div>',
+          '</div>',
+        '</div>',
+      '</section>',
+      schedule,
+      '<section class="cob-section cob-centered"><h2 style="margin:0;">Shabbat Shalom!</h2></section>'
+    ].join("");
+
+    window.setTimeout(function () {
+      window.dispatchEvent(new Event("resize"));
+    }, 50);
+  }
+
+  function renderFallback() {
+    var now = new Date();
+    var currentKey = localDateKey(now);
+    var specialStillCurrent = currentKey >= "2026-08-23" && currentKey <= "2026-08-29";
+
+    if (specialStillCurrent) {
+      content.className = "";
+      content.innerHTML = [
+        '<section class="cob-hero">',
+          '<p class="cob-kicker">Shabbat Times in Bologna</p>',
+          '<h1>Shabbat Parshat Ki Tavo</h1>',
+          '<p class="cob-lead">August 28&ndash;29, 2026 &middot; 15&ndash;16 Elul 5786</p>',
+          '<div class="cob-times">',
+            '<div class="cob-time"><div class="cob-time-label">Candle Lighting</div><div class="cob-time-value">19:39</div></div>',
+            '<div class="cob-time"><div class="cob-time-label">Shabbat Ends</div><div class="cob-time-value">20:45</div></div>',
+          '</div>',
+        '</section>',
+        specialScheduleHtml(specialWeeks["2026-08-28"]),
+        '<section class="cob-section cob-centered"><h2 style="margin:0;">Shabbat Shalom!</h2></section>'
+      ].join("");
+    } else {
+      content.className = "";
+      content.innerHTML = [
+        '<section class="cob-hero">',
+          '<p class="cob-kicker">Shabbat in Bologna</p>',
+          '<h1>Weekly Shabbat Information</h1>',
+          '<p class="cob-lead">Please use the links below for current times and schedule information.</p>',
+        '</section>',
+        '<section class="cob-section cob-note cob-centered">',
+          '<h2>Current Shabbat Information</h2>',
+          '<p>The automatic weekly information is temporarily unavailable.</p>',
+          '<div class="cob-actions" style="justify-content:center;">',
+            '<a class="cob-button cob-button-accent" href="https://www.chabad.org/calendar/candlelighting_cdo/locationId/1541/locationType/1/jewish/Candle-Lighting.htm" rel="noopener noreferrer" target="_blank">View Bologna Shabbat Times</a>',
+            '<a class="cob-button" href="https://wa.me/393498347528?text=Hello%2C%20I%20would%20like%20this%20week%27s%20Shabbat%20information." rel="noopener noreferrer" target="_blank">Contact Chabad</a>',
+          '</div>',
+        '</section>'
+      ].join("");
+    }
+  }
+
+  fetch(apiUrl, { cache: "no-store" })
+    .then(function (response) {
+      if (!response.ok) {
+        throw new Error("Calendar service unavailable");
+      }
+      return response.json();
+    })
+    .then(renderWeek)
+    .catch(renderFallback);
+}());
+</script>
+<script src="js/embed-child.js?v=20260823-5" type="text/javascript"></script>
 </body>
 </html>
