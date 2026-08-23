@@ -7,25 +7,35 @@
 <link rel="stylesheet" href="https://levibraun770-coder.github.io/chabad/css/site.css?v=20260823-3">
 <base href="https://www.chabadbologna.com/" target="_top">
 <style>
-.cob-meal-choice-title{margin:22px 0 12px;color:#680019;font-family:Georgia,"Times New Roman",serif;font-size:28px;line-height:1.25}
-.cob-meal-card{display:flex;flex-direction:column;border-top:3px solid #ef8a20}
-.cob-meal-card .cob-actions{margin-top:auto}
-.cob-cutlery-note{margin:12px 0 0;padding:12px 16px;border-left:3px solid #ef8a20;border-radius:8px;background:#fff8ef;color:#706568;font-size:14px;font-weight:700}
-.cob-refund-note{display:block;margin-top:4px;color:#706568;font-size:14px;line-height:1.45}
-.cob-order-process{margin-top:16px}
-.cob-order-steps{margin-top:14px}
-.cob-order-step{display:grid;grid-template-columns:36px minmax(0,1fr);gap:12px;align-items:center;padding:12px 0;border-bottom:1px solid #e8ded2}
-.cob-order-step:last-child{border-bottom:0}
-.cob-order-number{display:flex;width:34px;height:34px;align-items:center;justify-content:center;border-radius:50%;background:#fff0df;color:#680019;font-weight:700}
-.cob-order-step p{margin:0}
-.cob-kashrut{border-left:4px solid #ef8a20}
+.cob-meals-page .cob-hero{padding-top:34px;padding-bottom:34px}
+.cob-meals-page .cob-hero h1{max-width:680px}
+.cob-meals-page .cob-lead{margin-top:8px}
+.cob-meal-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:16px}
+.cob-meal-card{display:flex;flex-direction:column;padding:24px;border:1px solid #e8ded2;border-top:3px solid #ef8a20;border-radius:15px;background:#fff;box-shadow:0 5px 18px rgba(62,34,38,.05)}
+.cob-meal-label{margin:0 0 5px;color:#706568;font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase}
+.cob-meal-card h2{margin:0 0 8px;color:#680019;font-family:Georgia,"Times New Roman",serif;font-size:25px;line-height:1.25}
+.cob-meal-card p{margin:0 0 18px;color:#706568;font-size:15px;line-height:1.55}
+.cob-meal-card .cob-button{display:block;margin-top:auto}
+.cob-order-summary{margin-top:14px;padding:22px 24px;border:1px solid #e8ded2;border-left:4px solid #ef8a20;border-radius:15px;background:#fff8ef}
+.cob-order-summary h2{margin:0 0 14px;color:#680019;font-family:Georgia,"Times New Roman",serif;font-size:24px;line-height:1.25}
+.cob-summary-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 26px;margin:0;padding:0;list-style:none}
+.cob-summary-grid li{position:relative;margin:0;padding:9px 0 9px 20px;border-top:1px solid #eadfd3;color:#2e2526;font-size:14px;line-height:1.5}
+.cob-summary-grid li:nth-child(-n+2){border-top:0}
+.cob-summary-grid li:before{position:absolute;left:0;top:15px;width:7px;height:7px;border-radius:50%;background:#ef8a20;content:""}
 @media only screen and (max-width:700px){
-  .cob-meal-choice-title{margin-top:18px;font-size:25px}
+  .cob-meals-page .cob-hero{padding:29px 22px}
+  .cob-meals-page .cob-hero h1{font-size:36px}
+  .cob-meal-grid{grid-template-columns:1fr;gap:12px}
+  .cob-meal-card{padding:20px}
+  .cob-meal-card h2{font-size:24px}
+  .cob-order-summary{padding:19px 20px}
+  .cob-summary-grid{grid-template-columns:1fr}
+  .cob-summary-grid li:nth-child(2){border-top:1px solid #eadfd3}
 }
 </style>
 </head>
 <body style="margin:0">
-<div class="cob-page">
+<div class="cob-page cob-meals-page">
 <main class="cob-shell">
   <nav class="cob-parent-nav" aria-label="Section navigation">
     <a class="cob-parent-link" href="/templates/articlecco_cdo/aid/7259960/jewish/Visitor-Info.htm">← Visitor Info</a>
@@ -37,51 +47,30 @@
     <p class="cob-lead">Prepared kosher meals for weekdays and Shabbat.</p>
   </header>
 
-  <h2 class="cob-meal-choice-title">What would you like?</h2>
-
-  <div class="cob-grid">
-    <section class="cob-card cob-meal-card">
-      <p class="cob-kicker" style="color:#706568;">Sunday–Thursday</p>
+  <div class="cob-meal-grid">
+    <section class="cob-meal-card">
+      <p class="cob-meal-label">Sunday–Thursday</p>
       <h2>Weekday Kosher Meals</h2>
       <p>Pickup or delivery on weekdays after <strong>18:30</strong>.</p>
-      <div class="cob-actions">
-        <a class="cob-button" href="/article.asp?AID=7419841">Order Weekday Meals</a>
-      </div>
+      <a class="cob-button" href="/article.asp?AID=7419841">Order Weekday Meals</a>
     </section>
 
-    <section class="cob-card cob-meal-card">
-      <p class="cob-kicker" style="color:#706568;">For Shabbat</p>
+    <section class="cob-meal-card">
+      <p class="cob-meal-label">For Shabbat</p>
       <h2>Shabbat Food Package</h2>
       <p>Pickup or delivery on Friday after <strong>16:00</strong>.</p>
-      <div class="cob-actions">
-        <a class="cob-button" href="/article.asp?AID=7426805">Order a Shabbat Package</a>
-      </div>
+      <a class="cob-button" href="/article.asp?AID=7426805">Order a Shabbat Package</a>
     </section>
   </div>
 
-  <p class="cob-cutlery-note">Disposable cutlery is included with every order.</p>
-
-  <section class="cob-section cob-order-process">
-    <h2>How ordering works</h2>
-    <div class="cob-order-steps">
-      <div class="cob-order-step">
-        <span class="cob-order-number">1</span>
-        <p>Choose your meal option.</p>
-      </div>
-      <div class="cob-order-step">
-        <span class="cob-order-number">2</span>
-        <p>Order at least <strong>3 days in advance</strong>.</p>
-      </div>
-      <div class="cob-order-step">
-        <span class="cob-order-number">3</span>
-        <p>We confirm your order and arrange pickup or delivery.<span class="cob-refund-note">If we cannot fulfill the order, you will receive a full refund.</span></p>
-      </div>
-    </div>
-  </section>
-
-  <section class="cob-section cob-note cob-kashrut">
-    <h2>Kosher Lamehadrin</h2>
-    <p>All food is prepared under the strict supervision of Rabbi Levi Braun.</p>
+  <section class="cob-order-summary">
+    <h2>Before ordering</h2>
+    <ul class="cob-summary-grid">
+      <li>Order at least <strong>3 days in advance</strong>.</li>
+      <li>Disposable cutlery is included.</li>
+      <li>Orders are confirmed based on availability. If unavailable, you will receive a full refund.</li>
+      <li>Prepared under the strict supervision of Rabbi Levi Braun and certified <strong>Kosher Lamehadrin</strong>.</li>
+    </ul>
   </section>
 </main>
 </div>
