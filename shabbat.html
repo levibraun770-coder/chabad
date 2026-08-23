@@ -50,7 +50,7 @@
   "use strict";
 
   var content = document.getElementById("cob-weekly-content");
-  var apiUrl = "https://www.hebcal.com/shabbat?cfg=json&geonameid=3181928&M=on&b=20&leyning=off";
+  var apiUrl = "data/shabbat.json?v=" + new Date().getTime();
 
   /*
    * Add date-specific exceptions here. The key is that week's Friday date.
@@ -195,9 +195,9 @@
 
   function renderWeek(data) {
     var items = data && data.items ? data.items : [];
-    var candles = null;
-    var parashat = null;
-    var havdalah = null;
+    var candles = data && data.candles ? data.candles : null;
+    var parashat = data && data.parashat ? data.parashat : null;
+    var havdalah = data && data.havdalah ? data.havdalah : null;
     var i;
 
     for (i = 0; i < items.length; i += 1) {
