@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Student Portal | Chabad of Bologna</title>
+  <style>
+    html,
+    body {
+      width: 100%;
+      min-height: 100%;
+      margin: 0;
+      padding: 0;
+      background: #efeee9;
+    }
+
+    body {
+      overflow: hidden;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    #cob-student-page {
+      display: flex;
+      width: 100%;
+      height: 100vh;
+      height: 100dvh;
+      flex-direction: column;
+      overflow: hidden;
+      background: #efeee9;
+    }
+
+    #cob-student-header {
+      display: flex;
+      width: 100%;
+      height: 60px;
+      padding: 0 16px 0 20px;
+      flex: 0 0 60px;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      background: #efeee9;
+      border: 0;
+      box-shadow: none;
+    }
+
+    #cob-student-header .portal-title,
+    #cob-student-header .portal-title:link,
+    #cob-student-header .portal-title:visited,
+    #cob-student-header .portal-title:hover,
+    #cob-student-header .portal-title:focus,
+    #cob-student-header .portal-title:active {
+      display: block;
+      color: #292c33;
+      font-size: 16px;
+      line-height: 1.2;
+      font-weight: 700;
+      text-decoration: none;
+      border: 0;
+      box-shadow: none;
+      white-space: nowrap;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    #cob-student-header .portal-title:focus-visible,
+    #cob-student-header .main-logo-link:focus-visible {
+      outline: 2px solid #292c33;
+      outline-offset: 3px;
+    }
+
+    #cob-student-header .main-logo-link,
+    #cob-student-header .main-logo-link:link,
+    #cob-student-header .main-logo-link:visited,
+    #cob-student-header .main-logo-link:hover,
+    #cob-student-header .main-logo-link:focus,
+    #cob-student-header .main-logo-link:active {
+      display: block;
+      width: 48px;
+      height: 48px;
+      flex: 0 0 48px;
+      border: 0;
+      border-radius: 8px;
+      box-shadow: none;
+      text-decoration: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    #cob-student-header .main-logo {
+      display: block;
+      width: 48px;
+      height: 48px;
+      border: 0;
+      object-fit: contain;
+    }
+
+    #cob-student-portal {
+      display: block;
+      width: 100%;
+      min-height: 0;
+      flex: 1 1 auto;
+      overflow: hidden;
+      background: #efeee9;
+    }
+
+    #cob-student-portal iframe {
+      display: block;
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      background: #efeee9;
+    }
+
+    @media (max-width: 420px) {
+      #cob-student-header {
+        height: 58px;
+        padding: 0 12px 0 16px;
+        flex-basis: 58px;
+      }
+
+      #cob-student-header .portal-title {
+        font-size: 15px;
+      }
+
+      #cob-student-header .main-logo-link,
+      #cob-student-header .main-logo {
+        width: 46px;
+        height: 46px;
+      }
+
+      #cob-student-header .main-logo-link {
+        flex-basis: 46px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="cob-student-page">
+    <header id="cob-student-header">
+      <a
+        class="portal-title"
+        href="https://student.chabadoncampus.org/chabad-of-bologna/home"
+        target="cob-student-frame"
+        aria-label="Return to the Student Portal homepage">
+        Student Portal
+      </a>
+
+      <a
+        class="main-logo-link"
+        href="https://www.chabadbologna.com"
+        target="_top"
+        aria-label="Go to the Chabad of Bologna homepage">
+        <img
+          class="main-logo"
+          src="https://w2.chabad.org/media/images/1362/AMWf13628565.png"
+          alt="Chabad of Bologna" />
+      </a>
+    </header>
+
+    <main id="cob-student-portal">
+      <iframe
+        name="cob-student-frame"
+        src="https://student.chabadoncampus.org/chabad-of-bologna/home"
+        title="Chabad of Bologna Student Portal"
+        allow="camera; microphone; geolocation; clipboard-read; clipboard-write"
+        referrerpolicy="strict-origin-when-cross-origin">
+      </iframe>
+    </main>
+  </div>
+</body>
+</html>
