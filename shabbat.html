@@ -67,6 +67,18 @@
     }
   };
 
+  var weeklySchedules = {
+    "2026-09-04": {
+      fridayKabbalat: "20:00",
+      fridayDinner: "",
+      fridayLocation: "Chabad House",
+      shabbatServices: "9:15",
+      shabbatLunch: "12:15",
+      shabbatLocation: "Jewish Community",
+      communityUrl: "https://www.comunitaebraicabologna.it/en/contact-us/2932-shabbat-shalom-shabbat-meals"
+    }
+  };
+
   function escapeHtml(value) {
     return String(value || "")
       .replace(/&/g, "&amp;")
@@ -142,7 +154,16 @@
     return friday.day + " " + friday.month + " &ndash; " + saturday.day + " " + saturday.month + " " + saturday.year;
   }
 
-  function normalScheduleHtml() {
+  function normalScheduleHtml(weekly) {
+    var details = weekly || {
+      fridayKabbalat: "20:00",
+      fridayDinner: "",
+      fridayLocation: "Chabad House",
+      shabbatServices: "10:30",
+      shabbatLunch: "12:30",
+      shabbatLocation: "Synagogue",
+      communityUrl: "https://www.comunitaebraicabologna.it/en/"
+    };
     return [
       '<section class="cob-section cob-centered">',
         '<h2>Join Friday Night Dinner</h2>',
@@ -155,25 +176,27 @@
         '<section class="cob-card">',
           '<h2>Friday Night</h2>',
           '<table class="cob-schedule" role="presentation"><tbody>',
-            '<tr><td class="cob-schedule-time">20:00</td><td>Kabbalat Shabbat</td></tr>',
-            '<tr><td class="cob-schedule-time">&nbsp;</td><td>Shabbat Dinner</td></tr>',
+            '<tr><td class="cob-schedule-time">', escapeHtml(details.fridayKabbalat), '</td><td>Kabbalat Shabbat<div class="cob-small">', escapeHtml(details.fridayLocation), '</div></td></tr>',
+            '<tr><td class="cob-schedule-time">', escapeHtml(details.fridayDinner) || '&nbsp;', '</td><td>Shabbat Dinner<div class="cob-small">Following Kabbalat Shabbat &middot; ', escapeHtml(details.fridayLocation), '</div></td></tr>',
           '</tbody></table>',
         '</section>',
         '<section class="cob-card">',
           '<h2>Shabbat Day</h2>',
           '<table class="cob-schedule" role="presentation"><tbody>',
-            '<tr><td class="cob-schedule-time">10:30</td><td>Shacharit</td></tr>',
-            '<tr><td class="cob-schedule-time">(12:30)</td><td>Shabbat Lunch</td></tr>',
-            '<tr><td class="cob-schedule-time">&nbsp;</td><td>Mincha<div class="cob-small">Followed by Pirkei Avot</div></td></tr>',
-            '<tr><td class="cob-schedule-time">&nbsp;</td><td>Maariv, Havdalah and a Video of the Rebbe</td></tr>',
+            '<tr><td class="cob-schedule-time">', escapeHtml(details.shabbatServices), '</td><td>Shacharit<div class="cob-small">', escapeHtml(details.shabbatLocation), '</div></td></tr>',
+            '<tr><td class="cob-schedule-time">', escapeHtml(details.shabbatLunch), '</td><td>Shabbat Lunch<div class="cob-small">', escapeHtml(details.shabbatLocation), '</div></td></tr>',
           '</tbody></table>',
+          '<div class="cob-actions">',
+            '<a class="cob-button" href="', escapeHtml(details.communityUrl), '" rel="noopener noreferrer" target="_blank">Register with the Jewish Community</a>',
+          '</div>',
         '</section>',
       '</div>',
       '<section class="cob-section cob-note cob-centered">',
-        '<h2>Join Services or Contact Us</h2>',
-        '<p>Contact us if you would like to join services or need more information.</p>',
+        '<h2>Advance Registration Required</h2>',
+        '<p>Please register in advance for both Friday night at Chabad and Shabbat day at the Jewish Community.</p>',
         '<div class="cob-actions" style="justify-content:center;">',
-          '<a class="cob-button" href="https://wa.me/393498347528?text=Hello%2C%20I%20would%20like%20to%20join%20Shabbat%20services%20and%20receive%20more%20information." rel="noopener noreferrer" target="_blank">Contact Us on WhatsApp</a>',
+          '<a class="cob-button cob-button-accent" href="https://www.chabadbologna.com/templates/articlecco_cdo/aid/7418288/jewish/Friday-Night-Dinner.htm" target="_top">Register for Friday Night</a>',
+          '<a class="cob-button" href="', escapeHtml(details.communityUrl), '" rel="noopener noreferrer" target="_blank">Register for Shabbat Day</a>',
         '</div>',
       '</section>'
     ].join("");
@@ -213,7 +236,7 @@
     var fridayKey = localDateKey(candles.date);
     var parshahName = String(parashat.title || "This Week").replace(/^Parashat\s+/i, "");
     var special = specialWeeks[fridayKey];
-    var schedule = special ? specialScheduleHtml(special) : normalScheduleHtml();
+    var schedule = special ? specialScheduleHtml(special) : normalScheduleHtml(weeklySchedules[fridayKey]);
 
     content.className = "";
     content.innerHTML = [
