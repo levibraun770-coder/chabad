@@ -1,14 +1,14 @@
 {
-  "updatedAt": "2026-08-29T09:04:35.290Z",
+  "updatedAt": "2026-08-30T08:20:13.923Z",
   "candles": {
-    "date": "2026-08-28T19:38:00+02:00"
+    "date": "2026-09-04T19:25:00+02:00"
   },
   "parashat": {
-    "title": "Parashat Ki Tavo",
-    "date": "2026-08-29",
-    "hdate": "16 Elul 5786"
+    "title": "Parashat Nitzavim-Vayeilech",
+    "date": "2026-09-05",
+    "hdate": "23 Elul 5786"
   },
   "havdalah": {
-    "date": "2026-08-29T20:42:00+02:00"
+    "date": "2026-09-05T20:28:00+02:00"
   }
 }
