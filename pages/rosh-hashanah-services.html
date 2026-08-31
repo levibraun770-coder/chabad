@@ -8,8 +8,10 @@
 <base href="https://www.chabadbologna.com/" target="_top">
 <style type="text/css">
 html,body{margin:0;padding:0;background:#f7f4ef}
-.cob-rh-hero-meta{position:relative;z-index:1;display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
-.cob-rh-pill{padding:9px 13px;border:1px solid rgba(255,255,255,.24);border-radius:999px;background:rgba(255,255,255,.1);color:#fff;font-size:13px;font-weight:800;letter-spacing:.03em}
+.cob-rh-times{position:relative;z-index:1;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:22px}
+.cob-rh-holiday-time{padding:15px 12px;border:1px solid rgba(255,255,255,.24);border-radius:13px;background:rgba(255,255,255,.1);text-align:center}
+.cob-rh-holiday-label{color:#f6d7c0;font-size:11px;font-weight:800;letter-spacing:.55px;text-transform:uppercase}
+.cob-rh-holiday-value{margin-top:3px;color:#fff;font:700 25px/1.2 Georgia,"Times New Roman",serif}
 .cob-rh-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:14px 0}
 .cob-rh-card{display:flex;min-height:100%;flex-direction:column}
 .cob-rh-card .cob-actions{margin-top:auto}
@@ -34,7 +36,7 @@ html,body{margin:0;padding:0;background:#f7f4ef}
 .cob-rh-main-event h3{color:#680019;font-family:Georgia,"Times New Roman",serif;font-size:25px}
 .cob-rh-feature-actions{padding:0 24px 24px}
 @media(max-width:700px){
-  .cob-rh-grid,.cob-rh-feature-body{grid-template-columns:1fr}
+  .cob-rh-grid,.cob-rh-feature-body,.cob-rh-times{grid-template-columns:1fr}
   .cob-rh-feature-head{padding:22px 20px}
   .cob-rh-feature-head h2{font-size:27px}
   .cob-rh-feature-body{padding:14px}
@@ -50,9 +52,19 @@ html,body{margin:0;padding:0;background:#f7f4ef}
     <p class="cob-kicker">Rosh Hashanah in Bologna</p>
     <h1>Services &amp; Times</h1>
     <p class="cob-lead">September 11&ndash;13, 2026</p>
-    <div class="cob-rh-hero-meta">
-      <span class="cob-rh-pill">5787</span>
-      <span class="cob-rh-pill">Jewish Community &amp; Chabad House</span>
+    <div class="cob-rh-times">
+      <div class="cob-rh-holiday-time">
+        <div class="cob-rh-holiday-label">Candle Lighting · September 11</div>
+        <div class="cob-rh-holiday-value">19:15</div>
+      </div>
+      <div class="cob-rh-holiday-time">
+        <div class="cob-rh-holiday-label">Second Night Candles · September 12</div>
+        <div class="cob-rh-holiday-value">After 20:15</div>
+      </div>
+      <div class="cob-rh-holiday-time">
+        <div class="cob-rh-holiday-label">Holiday Ends · September 13</div>
+        <div class="cob-rh-holiday-value">20:13</div>
+      </div>
     </div>
   </section>
 
