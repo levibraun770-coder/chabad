@@ -11,13 +11,14 @@
 .cob-upcoming-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
 .cob-upcoming-card{padding:24px;border:1px solid #e8ded2;border-left:5px solid #ef8a20;border-radius:15px;background:#fff}
 .cob-upcoming-card h2{margin:0;color:#680019}
+.cob-upcoming-card-link,.cob-upcoming-card-link:visited{display:block;color:inherit;text-decoration:none}
+.cob-upcoming-card-link:hover h2,.cob-upcoming-card-link:focus h2{text-decoration:underline;text-decoration-color:#ef8a20;text-underline-offset:3px}
 .cob-upcoming-date{margin:8px 0 0;color:#706568;font-weight:700}
 .cob-coming-soon{display:inline-block;margin-top:14px;padding:7px 10px;border-radius:7px;background:#fff3e3;color:#680019;font-size:13px;font-weight:700}
 .cob-holiday-card{display:flex;min-height:170px;flex-direction:column}
 .cob-holiday-card .cob-link,.cob-holiday-card .cob-coming-soon{margin-top:auto;align-self:flex-start}
 .cob-holiday-card .cob-coming-soon{display:block;padding:0;border-radius:0;background:transparent;color:#706568}
 .cob-holiday-help{margin-top:16px}
-.cob-inline-holiday-link,.cob-inline-holiday-link:visited{color:#680019;text-decoration-color:#ef8a20;text-underline-offset:3px}
 @media only screen and (max-width:700px){
   .cob-upcoming-grid{grid-template-columns:1fr}
   .cob-upcoming-title,.cob-year-title{font-size:25px}
@@ -41,10 +42,17 @@
   <h2 class="cob-upcoming-title">Coming up</h2>
 
   <div class="cob-upcoming-grid" id="cob-upcoming-holiday">
+    <a class="cob-upcoming-card cob-upcoming-card-link" href="/templates/articlecco_cdo/aid/7489168/jewish/Rosh-Hashanah.htm">
+      <p class="cob-kicker" style="color:#ef8a20;">September 11–13, 2026</p>
+      <h2>Rosh Hashanah</h2>
+      <p class="cob-upcoming-date">Rosh Hashanah 5787</p>
+      <p>Services, meals, registration, and practical info will be published here.</p>
+    </a>
+
     <section class="cob-upcoming-card">
-      <p class="cob-kicker" style="color:#ef8a20;">September 11–21, 2026</p>
-      <h2><a class="cob-inline-holiday-link" href="/templates/articlecco_cdo/aid/7489168/jewish/Rosh-Hashanah.htm">Rosh Hashanah</a> &amp; Yom Kippur</h2>
-      <p class="cob-upcoming-date">High Holidays 5787</p>
+      <p class="cob-kicker" style="color:#ef8a20;">September 20–21, 2026</p>
+      <h2>Yom Kippur</h2>
+      <p class="cob-upcoming-date">Yom Kippur 5787</p>
       <p>Services, meals, registration, and practical info will be published here.</p>
       <span class="cob-coming-soon">Information coming soon</span>
     </section>
@@ -100,7 +108,8 @@
   "use strict";
 
   var holidays = [
-    {id:"high-holidays",name:"Rosh Hashanah & Yom Kippur",label:"High Holidays",description:"Services, meals, registration, and practical info will be published here.",learnDescription:"Rosh Hashanah, Yom Kippur, prayers, customs, and holiday resources.",href:"/holidays/JewishNewYear/template_cdo/aid/36130/jewish/High-Holidays.htm",month:["Tishri","Tishrei"],day:1,duration:10},
+    {id:"rosh-hashanah",name:"Rosh Hashanah",label:"Rosh Hashanah",description:"Services, meals, registration, and practical info will be published here.",learnDescription:"Rosh Hashanah prayers, customs, and holiday resources.",href:"/templates/articlecco_cdo/aid/7489168/jewish/Rosh-Hashanah.htm",month:["Tishri","Tishrei"],day:1,duration:2,clickable:true},
+    {id:"yom-kippur",name:"Yom Kippur",label:"Yom Kippur",description:"Services, meals, registration, and practical info will be published here.",learnDescription:"Yom Kippur prayers, customs, and holiday resources.",href:"/holidays/JewishNewYear/template_cdo/aid/36130/jewish/High-Holidays.htm",month:["Tishri","Tishrei"],day:10,duration:1},
     {id:"sukkot",name:"Sukkot & Simchat Torah",label:"Tishrei",description:"Programs, meals, services, and practical info will be published here.",learnDescription:"Programs, meals, services, and practical info.",href:"/holidays/JewishNewYear/template_cdo/aid/4784/jewish/Sukkot-Simchat-Torah.htm",month:["Tishri","Tishrei"],day:15,duration:9},
     {id:"chanukah",name:"Chanukah",label:"Kislev–Tevet",description:"Menorah lighting and community program information will be published here.",learnDescription:"Menorah lighting, customs, stories, recipes, and holiday resources.",href:"/holidays/chanukah/default_cdo/jewish/Hanukkah.htm",month:["Kislev"],day:25,duration:8},
     {id:"purim",name:"Purim",label:"Adar",description:"Megillah readings, celebrations, and practical info will be published here.",learnDescription:"Megillah, mitzvot, customs, stories, and Purim resources.",href:"/library/article_cdo/aid/638040/jewish/Purim.htm",month:["Adar","Adar II"],day:14,duration:1},
@@ -142,11 +151,11 @@
 
   function comingCard(occurrence) {
     var def = occurrence.definition;
-    var heading = def.name;
-    if (def.id === "high-holidays") {
-      heading = '<a class="cob-inline-holiday-link" href="/templates/articlecco_cdo/aid/7489168/jewish/Rosh-Hashanah.htm">Rosh Hashanah</a> &amp; Yom Kippur';
+    var inner = '<p class="cob-kicker" style="color:#ef8a20;">'+formatRange(occurrence.start,occurrence.end)+'</p><h2>'+def.name+'</h2><p class="cob-upcoming-date">'+def.label+(occurrence.hyear?" "+occurrence.hyear:"")+'</p><p>'+def.description+'</p>';
+    if (def.clickable) {
+      return '<a class="cob-upcoming-card cob-upcoming-card-link" href="'+def.href+'">'+inner+'</a>';
     }
-    return '<section class="cob-upcoming-card"><p class="cob-kicker" style="color:#ef8a20;">'+formatRange(occurrence.start,occurrence.end)+'</p><h2>'+heading+'</h2><p class="cob-upcoming-date">'+def.label+(occurrence.hyear?" "+occurrence.hyear:"")+'</p><p>'+def.description+'</p><span class="cob-coming-soon">Information coming soon</span></section>';
+    return '<section class="cob-upcoming-card">'+inner+'<span class="cob-coming-soon">Information coming soon</span></section>';
   }
 
   function regularCard(def) {
@@ -172,11 +181,13 @@
 
     if (occurrences.length) {
       var upcoming = [occurrences[0]];
-      if (occurrences[0].definition.id === "high-holidays") {
-        var sukkot = occurrences.find(function (occurrence) {
-          return occurrence.definition.id === "sukkot";
+      if (occurrences[0].definition.id === "rosh-hashanah") {
+        ["yom-kippur","sukkot"].forEach(function (id) {
+          var match = occurrences.find(function (occurrence) {
+            return occurrence.definition.id === id;
+          });
+          if (match) upcoming.push(match);
         });
-        if (sukkot) upcoming.push(sukkot);
       }
 
       var upcomingIds = upcoming.map(function (occurrence) {
