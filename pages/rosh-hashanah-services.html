@@ -27,7 +27,7 @@ html,body{margin:0;padding:0;background:#f7f4ef}
 .cob-rh-feature-head{padding:25px 28px;background:#680019;color:#fff}
 .cob-rh-feature-head p{margin:0 0 5px;color:#ffc27f;font-size:12px;font-weight:800;letter-spacing:1.25px;text-transform:uppercase}
 .cob-rh-feature-head h2{margin:0;color:#fff;font-family:Georgia,"Times New Roman",serif;font-size:31px;line-height:1.2}
-.cob-rh-feature-body{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:16px;padding:24px}
+.cob-rh-feature-body{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;padding:24px}
 .cob-rh-feature-item{padding:22px;border:1px solid #e8ded2;border-radius:14px;background:#fff}
 .cob-rh-feature-item .cob-rh-time{display:block;width:auto;padding:0!important;color:#680019;font:700 31px/1.1 Georgia,"Times New Roman",serif}
 .cob-rh-feature-item h3{margin:8px 0 3px;color:#2e2526;font-size:19px;line-height:1.3}
@@ -37,7 +37,7 @@ html,body{margin:0;padding:0;background:#f7f4ef}
 .cob-rh-main-event h3{color:#680019;font-family:Georgia,"Times New Roman",serif;font-size:25px}
 .cob-rh-feature-actions{padding:0 24px 24px}
 @media(max-width:700px){
-  .cob-rh-grid,.cob-rh-feature-body,.cob-rh-holiday-grid{grid-template-columns:1fr}
+  .cob-rh-grid,.cob-rh-feature-body{grid-template-columns:1fr}
   .cob-rh-feature-head{padding:22px 20px}
   .cob-rh-feature-head h2{font-size:27px}
   .cob-rh-feature-body{padding:14px}
@@ -67,11 +67,12 @@ html,body{margin:0;padding:0;background:#f7f4ef}
               <div class="cob-rh-location">Jewish Community</div>
             </td>
           </tr>
+          <tr>
+            <td class="cob-rh-time">19:15</td>
+            <td><div class="cob-rh-event">Candle Lighting</div></td>
+          </tr>
         </tbody>
       </table>
-      <div class="cob-actions">
-        <span class="cob-rh-status">RSVP Coming Soon</span>
-      </div>
     </section>
 
     <section class="cob-card cob-rh-card">
@@ -93,12 +94,17 @@ html,body{margin:0;padding:0;background:#f7f4ef}
               <div class="cob-rh-location">Jewish Community</div>
             </td>
           </tr>
+          <tr>
+            <td class="cob-rh-time">After 20:15</td>
+            <td><div class="cob-rh-event">Second Night Candle Lighting</div></td>
+          </tr>
         </tbody>
       </table>
-      <div class="cob-actions">
-        <span class="cob-rh-status">RSVP Coming Soon</span>
-      </div>
     </section>
+  </div>
+
+  <div class="cob-actions" style="justify-content:center;margin:4px 0 18px;">
+    <span class="cob-rh-status">RSVP Coming Soon</span>
   </div>
 
   <section class="cob-rh-feature">
@@ -117,32 +123,17 @@ html,body{margin:0;padding:0;background:#f7f4ef}
         <h3>Shofar &amp; Lunch</h3>
         <div class="cob-rh-location">Chabad House</div>
       </div>
+      <div class="cob-rh-feature-item">
+        <span class="cob-rh-time">20:13</span>
+        <h3>Holiday Ends</h3>
+      </div>
     </div>
     <div class="cob-rh-feature-actions">
       <span class="cob-rh-status">RSVP Coming Soon</span>
     </div>
   </section>
 
-  <section class="cob-section">
-    <h2>Holiday Times</h2>
-    <div class="cob-rh-holiday-grid">
-      <div class="cob-rh-holiday-item">
-        <div class="cob-rh-holiday-date">Friday, September 11</div>
-        <div class="cob-rh-holiday-label">Candle Lighting</div>
-        <div class="cob-rh-holiday-value">19:15</div>
-      </div>
-      <div class="cob-rh-holiday-item">
-        <div class="cob-rh-holiday-date">Saturday, September 12</div>
-        <div class="cob-rh-holiday-label">Second Night Candle Lighting</div>
-        <div class="cob-rh-holiday-value">After 20:15</div>
-      </div>
-      <div class="cob-rh-holiday-item">
-        <div class="cob-rh-holiday-date">Sunday, September 13</div>
-        <div class="cob-rh-holiday-label">Holiday Ends</div>
-        <div class="cob-rh-holiday-value">20:13</div>
-      </div>
-    </div>
-  </section>
+
 </div>
 </main>
 <script src="https://levibraun770-coder.github.io/chabad/js/embed-child.js?v=20260823-5" type="text/javascript"></script>
