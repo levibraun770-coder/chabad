@@ -17,6 +17,7 @@
 .cob-holiday-card .cob-link,.cob-holiday-card .cob-coming-soon{margin-top:auto;align-self:flex-start}
 .cob-holiday-card .cob-coming-soon{display:block;padding:0;border-radius:0;background:transparent;color:#706568}
 .cob-holiday-help{margin-top:16px}
+.cob-inline-holiday-link,.cob-inline-holiday-link:visited{color:#680019;text-decoration-color:#ef8a20;text-underline-offset:3px}
 @media only screen and (max-width:700px){
   .cob-upcoming-grid{grid-template-columns:1fr}
   .cob-upcoming-title,.cob-year-title{font-size:25px}
@@ -42,7 +43,7 @@
   <div class="cob-upcoming-grid" id="cob-upcoming-holiday">
     <section class="cob-upcoming-card">
       <p class="cob-kicker" style="color:#ef8a20;">September 11–21, 2026</p>
-      <h2>Rosh Hashanah &amp; Yom Kippur</h2>
+      <h2><a class="cob-inline-holiday-link" href="/templates/articlecco_cdo/aid/7489168/jewish/Rosh-Hashanah.htm">Rosh Hashanah</a> &amp; Yom Kippur</h2>
       <p class="cob-upcoming-date">High Holidays 5787</p>
       <p>Services, meals, registration, and practical info will be published here.</p>
       <span class="cob-coming-soon">Information coming soon</span>
@@ -141,7 +142,11 @@
 
   function comingCard(occurrence) {
     var def = occurrence.definition;
-    return '<section class="cob-upcoming-card"><p class="cob-kicker" style="color:#ef8a20;">'+formatRange(occurrence.start,occurrence.end)+'</p><h2>'+def.name+'</h2><p class="cob-upcoming-date">'+def.label+(occurrence.hyear?" "+occurrence.hyear:"")+'</p><p>'+def.description+'</p><span class="cob-coming-soon">Information coming soon</span></section>';
+    var heading = def.name;
+    if (def.id === "high-holidays") {
+      heading = '<a class="cob-inline-holiday-link" href="/templates/articlecco_cdo/aid/7489168/jewish/Rosh-Hashanah.htm">Rosh Hashanah</a> &amp; Yom Kippur';
+    }
+    return '<section class="cob-upcoming-card"><p class="cob-kicker" style="color:#ef8a20;">'+formatRange(occurrence.start,occurrence.end)+'</p><h2>'+heading+'</h2><p class="cob-upcoming-date">'+def.label+(occurrence.hyear?" "+occurrence.hyear:"")+'</p><p>'+def.description+'</p><span class="cob-coming-soon">Information coming soon</span></section>';
   }
 
   function regularCard(def) {
