@@ -8,11 +8,12 @@
 <base href="https://www.chabadbologna.com/" target="_top">
 <style type="text/css">
 html,body{margin:0;padding:0;background:#f7f4ef}
-.cob-rh-times{position:relative;z-index:1;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:22px}
-.cob-rh-holiday-time{padding:15px 12px;border:1px solid rgba(255,255,255,.24);border-radius:13px;background:rgba(255,255,255,.1);text-align:center}
-.cob-rh-holiday-label{color:#f6d7c0;font-size:11px;font-weight:800;letter-spacing:.55px;text-transform:uppercase}
-.cob-rh-holiday-value{margin-top:3px;color:#fff;font:700 25px/1.2 Georgia,"Times New Roman",serif}
-.cob-rh-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:14px 0}
+.cob-rh-holiday-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:16px}
+.cob-rh-holiday-item{padding:18px 16px;border:1px solid #e8ded2;border-radius:13px;background:#fffaf3;text-align:center}
+.cob-rh-holiday-date{color:#706568;font-size:13px;font-weight:700}
+.cob-rh-holiday-label{margin-top:7px;color:#680019;font-size:14px;font-weight:800}
+.cob-rh-holiday-value{margin-top:3px;color:#2e2526;font:700 26px/1.2 Georgia,"Times New Roman",serif}
+.cob-rh-grid{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,3fr);gap:14px;margin:14px 0}
 .cob-rh-card{display:flex;min-height:100%;flex-direction:column}
 .cob-rh-card .cob-actions{margin-top:auto}
 .cob-rh-schedule{width:100%;border-collapse:collapse}
@@ -36,7 +37,7 @@ html,body{margin:0;padding:0;background:#f7f4ef}
 .cob-rh-main-event h3{color:#680019;font-family:Georgia,"Times New Roman",serif;font-size:25px}
 .cob-rh-feature-actions{padding:0 24px 24px}
 @media(max-width:700px){
-  .cob-rh-grid,.cob-rh-feature-body,.cob-rh-times{grid-template-columns:1fr}
+  .cob-rh-grid,.cob-rh-feature-body,.cob-rh-holiday-grid{grid-template-columns:1fr}
   .cob-rh-feature-head{padding:22px 20px}
   .cob-rh-feature-head h2{font-size:27px}
   .cob-rh-feature-body{padding:14px}
@@ -49,23 +50,8 @@ html,body{margin:0;padding:0;background:#f7f4ef}
 <main class="cob-page">
 <div class="cob-shell">
   <section class="cob-hero">
-    <p class="cob-kicker">Rosh Hashanah in Bologna</p>
-    <h1>Services &amp; Times</h1>
-    <p class="cob-lead">September 11&ndash;13, 2026</p>
-    <div class="cob-rh-times">
-      <div class="cob-rh-holiday-time">
-        <div class="cob-rh-holiday-label">Candle Lighting · September 11</div>
-        <div class="cob-rh-holiday-value">19:15</div>
-      </div>
-      <div class="cob-rh-holiday-time">
-        <div class="cob-rh-holiday-label">Second Night Candles · September 12</div>
-        <div class="cob-rh-holiday-value">After 20:15</div>
-      </div>
-      <div class="cob-rh-holiday-time">
-        <div class="cob-rh-holiday-label">Holiday Ends · September 13</div>
-        <div class="cob-rh-holiday-value">20:13</div>
-      </div>
-    </div>
+    <h1>Rosh Hashanah Services &amp; Times</h1>
+    <p class="cob-lead">September 11&ndash;13, 2026 &middot; 5787</p>
   </section>
 
   <div class="cob-rh-grid">
@@ -78,7 +64,7 @@ html,body{margin:0;padding:0;background:#f7f4ef}
             <td class="cob-rh-time">19:00</td>
             <td>
               <div class="cob-rh-event">Mincha &amp; Arvit</div>
-              <div class="cob-rh-location">📍 Jewish Community</div>
+              <div class="cob-rh-location">Jewish Community</div>
             </td>
           </tr>
         </tbody>
@@ -97,14 +83,14 @@ html,body{margin:0;padding:0;background:#f7f4ef}
             <td class="cob-rh-time">9:00</td>
             <td>
               <div class="cob-rh-event">Shacharit &amp; Musaf</div>
-              <div class="cob-rh-location">📍 Jewish Community</div>
+              <div class="cob-rh-location">Jewish Community</div>
             </td>
           </tr>
           <tr>
             <td class="cob-rh-time">19:00</td>
             <td>
               <div class="cob-rh-event">Mincha &amp; Arvit</div>
-              <div class="cob-rh-location">📍 Jewish Community</div>
+              <div class="cob-rh-location">Jewish Community</div>
             </td>
           </tr>
         </tbody>
@@ -118,22 +104,43 @@ html,body{margin:0;padding:0;background:#f7f4ef}
   <section class="cob-rh-feature">
     <header class="cob-rh-feature-head">
       <p>Sunday, September 13</p>
-      <h2>Second Day at Chabad House</h2>
+      <h2>Second Day</h2>
     </header>
     <div class="cob-rh-feature-body">
       <div class="cob-rh-feature-item">
         <span class="cob-rh-time">10:30</span>
         <h3>Rosh Hashanah Services</h3>
-        <div class="cob-rh-location">📍 Chabad House</div>
+        <div class="cob-rh-location">Chabad House</div>
       </div>
       <div class="cob-rh-feature-item cob-rh-main-event">
         <span class="cob-rh-time">12:30</span>
         <h3>Shofar &amp; Lunch</h3>
-        <div class="cob-rh-location">📍 Chabad House</div>
+        <div class="cob-rh-location">Chabad House</div>
       </div>
     </div>
     <div class="cob-rh-feature-actions">
       <span class="cob-rh-status">RSVP Coming Soon</span>
+    </div>
+  </section>
+
+  <section class="cob-section">
+    <h2>Holiday Times</h2>
+    <div class="cob-rh-holiday-grid">
+      <div class="cob-rh-holiday-item">
+        <div class="cob-rh-holiday-date">Friday, September 11</div>
+        <div class="cob-rh-holiday-label">Candle Lighting</div>
+        <div class="cob-rh-holiday-value">19:15</div>
+      </div>
+      <div class="cob-rh-holiday-item">
+        <div class="cob-rh-holiday-date">Saturday, September 12</div>
+        <div class="cob-rh-holiday-label">Second Night Candle Lighting</div>
+        <div class="cob-rh-holiday-value">After 20:15</div>
+      </div>
+      <div class="cob-rh-holiday-item">
+        <div class="cob-rh-holiday-date">Sunday, September 13</div>
+        <div class="cob-rh-holiday-label">Holiday Ends</div>
+        <div class="cob-rh-holiday-value">20:13</div>
+      </div>
     </div>
   </section>
 </div>
