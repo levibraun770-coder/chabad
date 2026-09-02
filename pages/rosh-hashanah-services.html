@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Rosh Hashanah Services 2026 — Chabad of Bologna</title>
+<title>High Holiday Services 2026 — Chabad of Bologna</title>
 <link rel="stylesheet" href="https://levibraun770-coder.github.io/chabad/css/site.css?v=20260823-5">
 <base href="https://www.chabadbologna.com/" target="_top">
 <style type="text/css">
@@ -24,10 +24,10 @@ html,body{margin:0;padding:0;background:#f7f4ef}
 .cob-rh-location{margin-top:3px;color:#706568;font-size:14px;font-weight:400}
 .cob-rh-location a,.cob-rh-location a:visited{color:#680019;text-decoration-color:#ef8a20;text-underline-offset:3px}
 .cob-rh-location a:hover,.cob-rh-location a:focus{color:#680019;text-decoration-color:#ef8a20}
-.cob-rh-shared-rsvp{display:block;margin:4px 0 18px;padding:13px 16px;border-left:4px solid #ef8a20;border-radius:10px;background:#fff6e8;color:#680019!important;text-align:center;font-size:13px;font-weight:800;letter-spacing:.02em;text-decoration:none!important}
-.cob-rh-shared-rsvp:visited,.cob-rh-shared-rsvp:hover,.cob-rh-shared-rsvp:focus{color:#680019!important;text-decoration:none!important}
+.cob-rh-rsvp-row{display:flex;justify-content:center;margin:4px 0 18px}
+.cob-rh-rsvp{display:inline-block;padding:11px 24px;border:1px solid #680019;border-radius:999px;background:#680019;color:#fff!important;text-align:center;font-size:13px;font-weight:800;letter-spacing:.02em;text-decoration:none!important;box-shadow:0 5px 14px rgba(104,0,25,.14)}
+.cob-rh-rsvp:visited,.cob-rh-rsvp:hover,.cob-rh-rsvp:focus{color:#fff!important;text-decoration:none!important}
 .cob-rh-status{display:inline-block;padding:8px 12px;border:1px solid #e6c98f;border-radius:999px;background:#fff6e8;color:#680019;font-size:13px;font-weight:800;letter-spacing:.02em}
-.cob-rh-status-link,.cob-rh-status-link:visited,.cob-rh-status-link:hover,.cob-rh-status-link:focus{color:#680019!important;text-decoration:none!important}
 .cob-rh-feature{overflow:hidden;padding:0;border:1px solid #ddc9b5;border-radius:18px;background:#fff;box-shadow:0 12px 32px rgba(91,0,23,.08)}
 .cob-rh-feature-head{padding:25px 28px;background:#680019;color:#fff}
 .cob-rh-feature-head p{margin:0 0 5px;color:#ffc27f;font-size:12px;font-weight:800;letter-spacing:1.25px;text-transform:uppercase}
@@ -43,9 +43,12 @@ html,body{margin:0;padding:0;background:#f7f4ef}
 .cob-rh-end-line{margin:0 24px;padding:13px 0;border-top:1px solid #e8ded2;color:#706568;font-size:14px;font-weight:700;text-align:center}
 .cob-rh-end-line strong{color:#680019;font-size:16px}
 .cob-rh-feature-actions{display:flex;justify-content:center;padding:4px 24px 24px}
-.cob-rh-yk{margin-top:18px;padding:24px;border:1px solid #ddc9b5;border-radius:18px;background:#fff;box-shadow:0 12px 32px rgba(91,0,23,.08)}
-.cob-rh-yk h2{margin:0;color:#680019;font-family:Georgia,"Times New Roman",serif;font-size:28px;line-height:1.2}
-.cob-rh-yk-times{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:16px}
+.cob-rh-yk{overflow:hidden;margin-top:18px;padding:0;border:1px solid #ddc9b5;border-radius:18px;background:#fff;box-shadow:0 12px 32px rgba(91,0,23,.08)}
+.cob-rh-yk-head{padding:20px 24px;background:#680019;color:#fff}
+.cob-rh-yk-head h2{margin:0;color:#fff;font-family:Georgia,"Times New Roman",serif;font-size:28px;line-height:1.2}
+.cob-rh-yk-head .cob-small{margin:6px 0 0;color:#f1dce2}
+.cob-rh-yk-body{padding:20px 24px 22px}
+.cob-rh-yk-times{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
 .cob-rh-yk-time{padding:17px 16px;border:1px solid #e8ded2;border-radius:13px;background:#fffaf3;text-align:center}
 .cob-rh-yk-time span{display:block;color:#706568;font-size:13px;font-weight:700}
 .cob-rh-yk-time strong{display:block;margin-top:4px;color:#680019;font:700 26px/1.2 Georgia,"Times New Roman",serif}
@@ -58,7 +61,8 @@ html,body{margin:0;padding:0;background:#f7f4ef}
   .cob-rh-main-event{padding:14px 22px}
   .cob-rh-feature-actions{padding:2px 14px 18px}
   .cob-rh-time{width:70px}
-  .cob-rh-yk{padding:20px 14px}
+  .cob-rh-yk-head{padding:18px 20px}
+  .cob-rh-yk-body{padding:14px 14px 18px}
 }
 </style>
 </head>
@@ -137,7 +141,9 @@ html,body{margin:0;padding:0;background:#f7f4ef}
     </section>
   </div>
 
-  <a class="cob-rh-shared-rsvp" href="https://www.chabadbologna.com/templates/articlecco_cdo/aid/7494077/jewish/Rosh-Hashana-Form.htm" target="_top">RSVP</a>
+  <div class="cob-rh-rsvp-row">
+    <a class="cob-rh-rsvp" href="https://www.chabadbologna.com/templates/articlecco_cdo/aid/7494077/jewish/Rosh-Hashana-Form.htm" target="_top">RSVP</a>
+  </div>
 
   <section class="cob-rh-feature">
     <header class="cob-rh-feature-head">
@@ -158,24 +164,28 @@ html,body{margin:0;padding:0;background:#f7f4ef}
     </div>
     <div class="cob-rh-end-line">Holiday Ends <strong>20:13</strong></div>
     <div class="cob-rh-feature-actions">
-      <a class="cob-rh-status cob-rh-status-link" href="https://www.chabadbologna.com/templates/articlecco_cdo/aid/7494077/jewish/Rosh-Hashana-Form.htm" target="_top">RSVP</a>
+      <a class="cob-rh-rsvp" href="https://www.chabadbologna.com/templates/articlecco_cdo/aid/7494077/jewish/Rosh-Hashana-Form.htm" target="_top">RSVP</a>
     </div>
   </section>
 
   <section class="cob-rh-yk">
-    <h2>Yom Kippur</h2>
-    <p class="cob-small">September 20&ndash;21, 2026</p>
-    <div class="cob-rh-yk-times">
-      <div class="cob-rh-yk-time">
-        <span>Candle Lighting</span>
-        <strong>18:58</strong>
+    <header class="cob-rh-yk-head">
+      <h2>Yom Kippur</h2>
+      <p class="cob-small">September 20&ndash;21, 2026</p>
+    </header>
+    <div class="cob-rh-yk-body">
+      <div class="cob-rh-yk-times">
+        <div class="cob-rh-yk-time">
+          <span>Candle Lighting</span>
+          <strong>18:58</strong>
+        </div>
+        <div class="cob-rh-yk-time">
+          <span>Fast Ends</span>
+          <strong>19:58</strong>
+        </div>
       </div>
-      <div class="cob-rh-yk-time">
-        <span>Fast Ends</span>
-        <strong>19:58</strong>
-      </div>
+      <span class="cob-rh-status">Information Coming Soon</span>
     </div>
-    <span class="cob-rh-status">Information Coming Soon</span>
   </section>
 
 
