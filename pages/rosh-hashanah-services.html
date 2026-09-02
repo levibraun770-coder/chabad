@@ -22,9 +22,12 @@ html,body{margin:0;padding:0;background:#f7f4ef}
 .cob-rh-time{width:78px;padding-right:14px!important;color:#b85f16;font-size:18px;font-weight:800;white-space:nowrap}
 .cob-rh-event{color:#2e2526;font-weight:800}
 .cob-rh-location{margin-top:3px;color:#706568;font-size:14px;font-weight:400}
+.cob-rh-location a,.cob-rh-location a:visited{color:#680019;text-decoration-color:#ef8a20;text-underline-offset:3px}
+.cob-rh-location a:hover,.cob-rh-location a:focus{color:#680019;text-decoration-color:#ef8a20}
 .cob-rh-shared-rsvp{display:block;margin:4px 0 18px;padding:13px 16px;border-left:4px solid #ef8a20;border-radius:10px;background:#fff6e8;color:#680019!important;text-align:center;font-size:13px;font-weight:800;letter-spacing:.02em;text-decoration:none!important}
 .cob-rh-shared-rsvp:visited,.cob-rh-shared-rsvp:hover,.cob-rh-shared-rsvp:focus{color:#680019!important;text-decoration:none!important}
 .cob-rh-status{display:inline-block;padding:8px 12px;border:1px solid #e6c98f;border-radius:999px;background:#fff6e8;color:#680019;font-size:13px;font-weight:800;letter-spacing:.02em}
+.cob-rh-status-link,.cob-rh-status-link:visited,.cob-rh-status-link:hover,.cob-rh-status-link:focus{color:#680019!important;text-decoration:none!important}
 .cob-rh-feature{overflow:hidden;padding:0;border:1px solid #ddc9b5;border-radius:18px;background:#fff;box-shadow:0 12px 32px rgba(91,0,23,.08)}
 .cob-rh-feature-head{padding:25px 28px;background:#680019;color:#fff}
 .cob-rh-feature-head p{margin:0 0 5px;color:#ffc27f;font-size:12px;font-weight:800;letter-spacing:1.25px;text-transform:uppercase}
@@ -68,13 +71,13 @@ html,body{margin:0;padding:0;background:#f7f4ef}
 
   <section class="cob-hero">
     <h1>High Holiday Services &amp; Times</h1>
-    <p class="cob-lead">September 11&ndash;13, 2026 &middot; 5787</p>
+    <p class="cob-lead">2026 &middot; 5787</p>
   </section>
 
   <div class="cob-rh-grid">
     <section class="cob-card cob-rh-card">
-      <h2>First Night</h2>
-      <p class="cob-small">Friday, September 11</p>
+      <h2>Friday, September 11</h2>
+      <p class="cob-small">First Night of Rosh Hashanah</p>
       <table class="cob-rh-schedule" role="presentation">
         <tbody>
           <tr>
@@ -100,20 +103,16 @@ html,body{margin:0;padding:0;background:#f7f4ef}
     </section>
 
     <section class="cob-card cob-rh-card">
-      <h2>First Day</h2>
-      <p class="cob-small">Saturday, September 12</p>
+      <h2>Saturday, September 12</h2>
+      <p class="cob-small">First Day &amp; Second Night of Rosh Hashanah</p>
       <table class="cob-rh-schedule" role="presentation">
         <tbody>
           <tr>
             <td class="cob-rh-time">9:00</td>
             <td>
               <div class="cob-rh-event">Shacharit &amp; Musaf</div>
-              <div class="cob-rh-location">Jewish Community</div>
+              <div class="cob-rh-location"><a href="https://www.comunitaebraicabologna.it/en/" target="_top">Jewish Community</a></div>
             </td>
-          </tr>
-          <tr>
-            <td class="cob-rh-time">After 20:15</td>
-            <td><div class="cob-rh-event">Second Night Candle Lighting</div></td>
           </tr>
           <tr>
             <td class="cob-rh-time">20:15</td>
@@ -121,6 +120,10 @@ html,body{margin:0;padding:0;background:#f7f4ef}
               <div class="cob-rh-event">Arvit</div>
               <div class="cob-rh-location">Chabad House</div>
             </td>
+          </tr>
+          <tr>
+            <td class="cob-rh-time">After 20:15</td>
+            <td><div class="cob-rh-event">Second Night Candle Lighting</div></td>
           </tr>
           <tr>
             <td class="cob-rh-time">20:30</td>
@@ -138,8 +141,8 @@ html,body{margin:0;padding:0;background:#f7f4ef}
 
   <section class="cob-rh-feature">
     <header class="cob-rh-feature-head">
-      <p>Sunday, September 13</p>
-      <h2>Second Day</h2>
+      <p>Second Day of Rosh Hashanah</p>
+      <h2>Sunday, September 13</h2>
     </header>
     <div class="cob-rh-feature-body">
       <div class="cob-rh-feature-item">
@@ -155,12 +158,13 @@ html,body{margin:0;padding:0;background:#f7f4ef}
     </div>
     <div class="cob-rh-end-line">Holiday Ends <strong>20:13</strong></div>
     <div class="cob-rh-feature-actions">
-      <span class="cob-rh-status">RSVP Coming Soon</span>
+      <a class="cob-rh-status cob-rh-status-link" href="https://www.chabadbologna.com/templates/articlecco_cdo/aid/7494077/jewish/Rosh-Hashana-Form.htm" target="_top">RSVP</a>
     </div>
   </section>
 
   <section class="cob-rh-yk">
     <h2>Yom Kippur</h2>
+    <p class="cob-small">September 20&ndash;21, 2026</p>
     <div class="cob-rh-yk-times">
       <div class="cob-rh-yk-time">
         <span>Candle Lighting</span>
