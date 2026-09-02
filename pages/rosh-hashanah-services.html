@@ -22,7 +22,8 @@ html,body{margin:0;padding:0;background:#f7f4ef}
 .cob-rh-time{width:78px;padding-right:14px!important;color:#b85f16;font-size:18px;font-weight:800;white-space:nowrap}
 .cob-rh-event{color:#2e2526;font-weight:800}
 .cob-rh-location{margin-top:3px;color:#706568;font-size:14px;font-weight:400}
-.cob-rh-shared-rsvp{margin:4px 0 18px;padding:13px 16px;border-left:4px solid #ef8a20;border-radius:10px;background:#fff6e8;color:#680019;text-align:center;font-size:13px;font-weight:800;letter-spacing:.02em}
+.cob-rh-shared-rsvp{display:block;margin:4px 0 18px;padding:13px 16px;border-left:4px solid #ef8a20;border-radius:10px;background:#fff6e8;color:#680019!important;text-align:center;font-size:13px;font-weight:800;letter-spacing:.02em;text-decoration:none!important}
+.cob-rh-shared-rsvp:visited,.cob-rh-shared-rsvp:hover,.cob-rh-shared-rsvp:focus{color:#680019!important;text-decoration:none!important}
 .cob-rh-status{display:inline-block;padding:8px 12px;border:1px solid #e6c98f;border-radius:999px;background:#fff6e8;color:#680019;font-size:13px;font-weight:800;letter-spacing:.02em}
 .cob-rh-feature{overflow:hidden;padding:0;border:1px solid #ddc9b5;border-radius:18px;background:#fff;box-shadow:0 12px 32px rgba(91,0,23,.08)}
 .cob-rh-feature-head{padding:25px 28px;background:#680019;color:#fff}
@@ -39,6 +40,13 @@ html,body{margin:0;padding:0;background:#f7f4ef}
 .cob-rh-end-line{margin:0 24px;padding:13px 0;border-top:1px solid #e8ded2;color:#706568;font-size:14px;font-weight:700;text-align:center}
 .cob-rh-end-line strong{color:#680019;font-size:16px}
 .cob-rh-feature-actions{display:flex;justify-content:center;padding:4px 24px 24px}
+.cob-rh-yk{margin-top:18px;padding:24px;border:1px solid #ddc9b5;border-radius:18px;background:#fff;box-shadow:0 12px 32px rgba(91,0,23,.08)}
+.cob-rh-yk h2{margin:0;color:#680019;font-family:Georgia,"Times New Roman",serif;font-size:28px;line-height:1.2}
+.cob-rh-yk-times{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:16px}
+.cob-rh-yk-time{padding:17px 16px;border:1px solid #e8ded2;border-radius:13px;background:#fffaf3;text-align:center}
+.cob-rh-yk-time span{display:block;color:#706568;font-size:13px;font-weight:700}
+.cob-rh-yk-time strong{display:block;margin-top:4px;color:#680019;font:700 26px/1.2 Georgia,"Times New Roman",serif}
+.cob-rh-yk .cob-rh-status{display:block;width:max-content;margin:16px auto 0}
 @media(max-width:700px){
   .cob-rh-grid,.cob-rh-feature-body{grid-template-columns:1fr}
   .cob-rh-feature-head{padding:22px 20px}
@@ -47,6 +55,7 @@ html,body{margin:0;padding:0;background:#f7f4ef}
   .cob-rh-main-event{padding:14px 22px}
   .cob-rh-feature-actions{padding:2px 14px 18px}
   .cob-rh-time{width:70px}
+  .cob-rh-yk{padding:20px 14px}
 }
 </style>
 </head>
@@ -58,7 +67,7 @@ html,body{margin:0;padding:0;background:#f7f4ef}
   </nav>
 
   <section class="cob-hero">
-    <h1>Rosh Hashanah Services &amp; Times</h1>
+    <h1>High Holiday Services &amp; Times</h1>
     <p class="cob-lead">September 11&ndash;13, 2026 &middot; 5787</p>
   </section>
 
@@ -69,15 +78,22 @@ html,body{margin:0;padding:0;background:#f7f4ef}
       <table class="cob-rh-schedule" role="presentation">
         <tbody>
           <tr>
-            <td class="cob-rh-time">19:00</td>
+            <td class="cob-rh-time">19:15</td>
+            <td><div class="cob-rh-event">Candle Lighting</div></td>
+          </tr>
+          <tr>
+            <td class="cob-rh-time">19:45</td>
             <td>
-              <div class="cob-rh-event">Mincha &amp; Arvit</div>
-              <div class="cob-rh-location">Jewish Community</div>
+              <div class="cob-rh-event">Arvit</div>
+              <div class="cob-rh-location">Chabad House</div>
             </td>
           </tr>
           <tr>
-            <td class="cob-rh-time">19:15</td>
-            <td><div class="cob-rh-event">Candle Lighting</div></td>
+            <td class="cob-rh-time">20:00</td>
+            <td>
+              <div class="cob-rh-event">Dinner</div>
+              <div class="cob-rh-location">Chabad House</div>
+            </td>
           </tr>
         </tbody>
       </table>
@@ -96,22 +112,29 @@ html,body{margin:0;padding:0;background:#f7f4ef}
             </td>
           </tr>
           <tr>
-            <td class="cob-rh-time">19:00</td>
+            <td class="cob-rh-time">After 20:15</td>
+            <td><div class="cob-rh-event">Second Night Candle Lighting</div></td>
+          </tr>
+          <tr>
+            <td class="cob-rh-time">20:15</td>
             <td>
-              <div class="cob-rh-event">Mincha &amp; Arvit</div>
-              <div class="cob-rh-location">Jewish Community</div>
+              <div class="cob-rh-event">Arvit</div>
+              <div class="cob-rh-location">Chabad House</div>
             </td>
           </tr>
           <tr>
-            <td class="cob-rh-time">After 20:15</td>
-            <td><div class="cob-rh-event">Second Night Candle Lighting</div></td>
+            <td class="cob-rh-time">20:30</td>
+            <td>
+              <div class="cob-rh-event">Dinner</div>
+              <div class="cob-rh-location">Chabad House</div>
+            </td>
           </tr>
         </tbody>
       </table>
     </section>
   </div>
 
-  <div class="cob-rh-shared-rsvp">RSVP Coming Soon</div>
+  <a class="cob-rh-shared-rsvp" href="https://www.chabadbologna.com/templates/articlecco_cdo/aid/7494077/jewish/Rosh-Hashana-Form.htm" target="_top">RSVP</a>
 
   <section class="cob-rh-feature">
     <header class="cob-rh-feature-head">
@@ -134,6 +157,21 @@ html,body{margin:0;padding:0;background:#f7f4ef}
     <div class="cob-rh-feature-actions">
       <span class="cob-rh-status">RSVP Coming Soon</span>
     </div>
+  </section>
+
+  <section class="cob-rh-yk">
+    <h2>Yom Kippur</h2>
+    <div class="cob-rh-yk-times">
+      <div class="cob-rh-yk-time">
+        <span>Candle Lighting</span>
+        <strong>18:58</strong>
+      </div>
+      <div class="cob-rh-yk-time">
+        <span>Fast Ends</span>
+        <strong>19:58</strong>
+      </div>
+    </div>
+    <span class="cob-rh-status">Information Coming Soon</span>
   </section>
 
 
