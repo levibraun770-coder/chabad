@@ -149,6 +149,40 @@
     return friday.day + " " + friday.month + " &ndash; " + saturday.day + " " + saturday.month + " " + saturday.year;
   }
 
+  function romeDateKey(dateValue) {
+    var parts = new Intl.DateTimeFormat("en-CA", {
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit",
+      timeZone: "Europe/Rome"
+    }).formatToParts(dateValue);
+    var result = {};
+    var i;
+    for (i = 0; i < parts.length; i += 1) {
+      if (parts[i].type !== "literal") {
+        result[parts[i].type] = parts[i].value;
+      }
+    }
+    return result.year + "-" + result.month + "-" + result.day;
+  }
+
+  function renderRoshHashanahLink() {
+    content.className = "";
+    content.innerHTML = [
+      '<section class="cob-hero">',
+        '<p class="cob-kicker">High Holidays in Bologna</p>',
+        '<h1>Rosh Hashanah 5787</h1>',
+        '<p class="cob-lead">September 11&ndash;13, 2026</p>',
+      '</section>',
+      '<section class="cob-section cob-centered">',
+        '<h2>Rosh Hashanah Schedule and RSVP</h2>',
+        '<div class="cob-actions" style="justify-content:center;">',
+          '<a class="cob-button cob-button-accent" href="https://www.chabadbologna.com/templates/articlecco_cdo/aid/7489168/jewish/Rosh-Hashanah.htm" target="_top">View Rosh Hashanah Information</a>',
+        '</div>',
+      '</section>'
+    ].join("");
+  }
+
   function normalScheduleHtml(weekly) {
     var details = weekly || {
       fridayKabbalat: "20:00",
@@ -301,6 +335,12 @@
         '</section>'
       ].join("");
     }
+  }
+
+  var todayInRome = romeDateKey(new Date());
+  if (todayInRome >= "2026-09-06" && todayInRome <= "2026-09-13") {
+    renderRoshHashanahLink();
+    return;
   }
 
   fetch(apiUrl, { cache: "no-store" })
