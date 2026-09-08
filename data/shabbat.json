@@ -1,14 +1,15 @@
 {
-  "updatedAt": "2026-09-05T06:56:53.355Z",
+  "updatedAt": "2026-09-08T08:42:16.718Z",
   "candles": {
-    "date": "2026-09-04T19:25:00+02:00"
+    "date": "2026-09-11T19:13:00+02:00"
   },
-  "parashat": {
-    "title": "Parashat Nitzavim-Vayeilech",
-    "date": "2026-09-05",
-    "hdate": "23 Elul 5786"
-  },
+  "parashat": null,
   "havdalah": {
-    "date": "2026-09-05T20:28:00+02:00"
+    "date": "2026-09-13T20:13:00+02:00"
+  },
+  "holiday": {
+    "title": "Rosh Hashana 5787",
+    "date": "2026-09-12",
+    "hdate": "1 Tishrei 5787"
   }
 }

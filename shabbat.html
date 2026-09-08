@@ -249,21 +249,25 @@
     var items = data && data.items ? data.items : [];
     var candles = data && data.candles ? data.candles : null;
     var parashat = data && data.parashat ? data.parashat : null;
+    var holiday = data && data.holiday ? data.holiday : null;
     var havdalah = data && data.havdalah ? data.havdalah : null;
     var i;
 
     for (i = 0; i < items.length; i += 1) {
       if (items[i].category === "candles") { candles = items[i]; }
       if (items[i].category === "parashat") { parashat = items[i]; }
+      if (items[i].category === "holiday" && !/^Erev\b/i.test(items[i].title || "")) { holiday = items[i]; }
       if (items[i].category === "havdalah") { havdalah = items[i]; }
     }
 
-    if (!candles || !parashat || !havdalah) {
+    if (!candles || !havdalah || (!parashat && !holiday)) {
       throw new Error("Incomplete Shabbat information");
     }
 
     var fridayKey = localDateKey(candles.date);
-    var parshahName = String(parashat.title || "This Week").replace(/^Parashat\s+/i, "");
+    var heading = parashat
+      ? "Shabbat Parshat " + String(parashat.title || "This Week").replace(/^Parashat\s+/i, "")
+      : String(holiday.title || "Holiday Shabbat");
     var special = specialWeeks[fridayKey];
     var schedule = special ? specialScheduleHtml(special) : normalScheduleHtml(weeklySchedules[fridayKey]);
 
@@ -271,7 +275,7 @@
     content.innerHTML = [
       '<section class="cob-hero">',
         '<p class="cob-kicker">Shabbat Times in Bologna</p>',
-        '<h1>Shabbat Parshat ', escapeHtml(parshahName), '</h1>',
+        '<h1>', escapeHtml(heading), '</h1>',
         '<p class="cob-lead">',
           displayEnglishRange(candles.date, havdalah.date),
           ' &middot; ',
