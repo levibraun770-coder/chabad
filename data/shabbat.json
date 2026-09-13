@@ -1,15 +1,14 @@
 {
-  "updatedAt": "2026-09-08T08:42:16.718Z",
+  "updatedAt": "2026-09-13T07:30:14.927Z",
   "candles": {
-    "date": "2026-09-11T19:13:00+02:00"
+    "date": "2026-09-18T18:59:00+02:00"
   },
-  "parashat": null,
+  "parashat": {
+    "title": "Parashat Ha’azinu",
+    "date": "2026-09-19",
+    "hdate": "8 Tishrei 5787"
+  },
   "havdalah": {
     "date": "2026-09-13T20:13:00+02:00"
-  },
-  "holiday": {
-    "title": "Rosh Hashana 5787",
-    "date": "2026-09-12",
-    "hdate": "1 Tishrei 5787"
   }
 }
