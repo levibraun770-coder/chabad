@@ -1,5 +1,6 @@
 /* Native ChabadOne integration; existing iframe files remain untouched. */
 @import url("./site.css?v=20260823-3");
+
 /* Applied only when native content is present. */
 #BodyContainer:has(.cob-native) > .body_wrapper::before,
 #BodyContainer:has(.cob-native) .bh,
@@ -8,7 +9,8 @@
 #BodyContainer:has(.cob-native) .breadcrumbs,
 #BodyContainer:has(.cob-native) #co_ads_container,
 #BodyContainer:has(.cob-native) .content-footer,
-#BodyContainer:has(.cob-native) .local-navigation-quick-links { display:none!important; }
+#BodyContainer:has(.cob-native) .local-navigation-quick-links {display:none!important;}
+
 #BodyContainer:has(.cob-native),
 #BodyContainer:has(.cob-native) .body_wrapper,
 #BodyContainer:has(.cob-native) #co_content_container,
@@ -18,7 +20,28 @@
 #BodyContainer:has(.cob-native) #cco_body,
 #BodyContainer:has(.cob-native) #cco_body > .content,
 #BodyContainer:has(.cob-native) .co_body.article-body {
-width:100%!important;max-width:none!important;float:none!important;margin:0!important;padding:0!important;
+  width:100%!important;max-width:none!important;float:none!important;margin:0!important;padding:0!important;
 }
-.cob-native a:focus-visible {outline:3px solid #f28c28;outline-offset:4px;}
+
+/* ChabadOne theme uses broad element selectors; keep the pilot design scoped and predictable. */
+.sites-article .cob-native{background:#f7f4ef!important;color:#2e2526!important;padding:24px 16px 42px!important;}
+.sites-article .cob-native .cob-shell{display:block!important;max-width:920px!important;margin:0 auto!important;}
+.sites-article .cob-native .cob-hero{display:block!important;background:#5b0017!important;color:#fff!important;border-radius:18px!important;padding:46px 38px!important;margin:0 0 18px!important;}
+.sites-article .cob-native .cob-hero h1{color:#fff!important;}
+.sites-article .cob-native .cob-grid{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:14px!important;margin:14px 0!important;}
+.sites-article .cob-native .cob-grid-3{grid-template-columns:repeat(3,minmax(0,1fr))!important;}
+.sites-article .cob-native .cob-card{display:block!important;background:#fff!important;border:1px solid #e8ded2!important;border-top:3px solid #f28c28!important;border-radius:15px!important;padding:27px 25px 24px!important;margin:0!important;}
+.sites-article .cob-native .cob-card h3{display:block!important;margin:0 0 7px!important;}
+.sites-article .cob-native .cob-section{display:block!important;background:#fff!important;border:1px solid #e8ded2!important;border-radius:15px!important;padding:26px!important;margin:14px 0!important;}
+.sites-article .cob-native .cob-note{background:#fff8ef!important;border-left:4px solid #f28c28!important;}
+.cob-native a:focus-visible{outline:3px solid #f28c28;outline-offset:4px;}
+
+@media(max-width:700px){
+  .sites-article .cob-native{padding:12px 8px 30px!important;}
+  .sites-article .cob-native .cob-hero{padding:34px 22px!important;border-radius:14px!important;}
+  .sites-article .cob-native .cob-grid,
+  .sites-article .cob-native .cob-grid-3{grid-template-columns:1fr!important;}
+  .sites-article .cob-native .cob-card,
+  .sites-article .cob-native .cob-section{padding:20px!important;}
+}
 @media(prefers-reduced-motion:reduce){.cob-native a.cob-card{transition:none}.cob-native a.cob-card:hover{transform:none}}
