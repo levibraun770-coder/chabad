@@ -1,0 +1,25 @@
+<style type="text/css">
+#BodyContainer > .body_wrapper::before,#BodyContainer > .body_wrapper:before {content:none!important;display:none!important}
+#BodyContainer .bh,#BodyContainer div.bh,.bh.mobile-only,.mobile-only.align_right.bh {display:none!important;visibility:hidden!important;width:0!important;height:0!important;margin:0!important;padding:0!important;overflow:hidden!important}
+#BodyContainer .master-content-wrapper.g960,#BodyContainer .article-header,#BodyContainer .article-header__title,#BodyContainer .breadcrumbs,#BodyContainer #co_ads_container,#BodyContainer .content-footer,#BodyContainer .local-navigation-quick-links {display:none!important;height:0!important;margin:0!important;padding:0!important}
+#BodyContainer,#BodyContainer .body_wrapper,#BodyContainer #co_content_container,#BodyContainer #co_body_container,#BodyContainer #ContentBody,#BodyContainer .content-area-parent,#BodyContainer #cco_body,#BodyContainer #cco_body > .content,#BodyContainer .co_body.article-body {width:100%!important;max-width:none!important;float:none!important;margin:0!important;padding:0!important}
+#cob-github-frame-wrapper {display:block;width:100%;margin:0;padding:0;overflow:hidden}
+#cob-github-frame {display:block;width:100%;height:1200px;margin:0;padding:0;border:0;background-color:#f7f4ef;overflow:hidden}
+</style>
+<div id="cob-github-frame-wrapper"><iframe allowtransparency="true" frameborder="0" id="cob-github-frame" scrolling="no" src="https://levibraun770-coder.github.io/chabad/pages/jewish-classes.html?v=20260823-2" style="display:block; width:100%; height:1200px; margin:0; padding:0; border:0; background-color:#f7f4ef; overflow:hidden;" title="Jewish Classes in Bologna"></iframe></div>
+<script type="text/javascript">
+(function () {
+  var frame = document.getElementById("cob-github-frame");
+  if (!frame) { return; }
+  function resizeFrame(event) {
+    if (event.origin !== "https://levibraun770-coder.github.io") { return; }
+    if (event.source !== frame.contentWindow) { return; }
+    var information = event.data;
+    if (!information || information.type !== "cob-frame-height") { return; }
+    var newHeight = Number(information.height);
+    if (!isFinite(newHeight) || newHeight > 10000) { return; }
+    if (newHeight > 200) { frame.style.height = Math.ceil(newHeight) + "px"; }
+  }
+  window.addEventListener("message", resizeFrame, false);
+})();
+</script>
