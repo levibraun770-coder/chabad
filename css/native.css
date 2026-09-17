@@ -1,7 +1,7 @@
 /* Native ChabadOne integration; existing iframe files remain untouched. */
 @import url("./site.css?v=20260823-3");
 
-/* Applied only when native content is present. */
+/* Remove ChabadOne article chrome only on pages containing native content. */
 #BodyContainer:has(.cob-native) > .body_wrapper::before,
 #BodyContainer:has(.cob-native) .bh,
 #BodyContainer:has(.cob-native) .master-content-wrapper.g960,
@@ -20,28 +20,220 @@
 #BodyContainer:has(.cob-native) #cco_body,
 #BodyContainer:has(.cob-native) #cco_body > .content,
 #BodyContainer:has(.cob-native) .co_body.article-body {
-  width:100%!important;max-width:none!important;float:none!important;margin:0!important;padding:0!important;
+  width:100%!important;
+  max-width:none!important;
+  float:none!important;
+  margin:0!important;
+  padding:0!important;
 }
 
-/* ChabadOne theme uses broad element selectors; keep the pilot design scoped and predictable. */
-.sites-article .cob-native{background:#f7f4ef!important;color:#2e2526!important;padding:24px 16px 42px!important;}
-.sites-article .cob-native .cob-shell{display:block!important;max-width:920px!important;margin:0 auto!important;}
-.sites-article .cob-native .cob-hero{display:block!important;background:#5b0017!important;color:#fff!important;border-radius:18px!important;padding:46px 38px!important;margin:0 0 18px!important;}
-.sites-article .cob-native .cob-hero h1{color:#fff!important;}
-.sites-article .cob-native .cob-grid{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:14px!important;margin:14px 0!important;}
-.sites-article .cob-native .cob-grid-3{grid-template-columns:repeat(3,minmax(0,1fr))!important;}
-.sites-article .cob-native .cob-card{display:block!important;background:#fff!important;border:1px solid #e8ded2!important;border-top:3px solid #f28c28!important;border-radius:15px!important;padding:27px 25px 24px!important;margin:0!important;}
-.sites-article .cob-native .cob-card h3{display:block!important;margin:0 0 7px!important;}
-.sites-article .cob-native .cob-section{display:block!important;background:#fff!important;border:1px solid #e8ded2!important;border-radius:15px!important;padding:26px!important;margin:14px 0!important;}
-.sites-article .cob-native .cob-note{background:#fff8ef!important;border-left:4px solid #f28c28!important;}
-.cob-native a:focus-visible{outline:3px solid #f28c28;outline-offset:4px;}
+/* ChabadOne loads strong theme selectors after document content. Scope every
+   override to .cob-native so the pilot keeps the existing iframe design. */
+.cob-native,
+.cob-native * {box-sizing:border-box!important;}
 
-@media(max-width:700px){
-  .sites-article .cob-native{padding:12px 8px 30px!important;}
-  .sites-article .cob-native .cob-hero{padding:34px 22px!important;border-radius:14px!important;}
-  .sites-article .cob-native .cob-grid,
-  .sites-article .cob-native .cob-grid-3{grid-template-columns:1fr!important;}
-  .sites-article .cob-native .cob-card,
-  .sites-article .cob-native .cob-section{padding:20px!important;}
+.cob-native {
+  --wine:#5b0017;
+  --wine2:#760b29;
+  --orange:#f28c28;
+  --cream:#f7f4ef;
+  --paper:#fff;
+  --ink:#2e2526;
+  --muted:#706568;
+  --line:#e8ded2;
+  display:block!important;
+  width:100%!important;
+  margin:0!important;
+  padding:24px 16px 42px!important;
+  background:var(--cream)!important;
+  color:var(--ink)!important;
+  font-family:Arial,Helvetica,sans-serif!important;
+  font-size:16px!important;
+  line-height:1.65!important;
 }
-@media(prefers-reduced-motion:reduce){.cob-native a.cob-card{transition:none}.cob-native a.cob-card:hover{transform:none}}
+
+.cob-native .cob-shell {
+  display:block!important;
+  width:100%!important;
+  max-width:920px!important;
+  margin:0 auto!important;
+  padding:0!important;
+}
+
+.cob-native .cob-parent-nav {display:block!important;margin:0 0 12px!important;}
+.cob-native .cob-parent-link {
+  display:inline-flex!important;
+  align-items:center!important;
+  min-height:40px!important;
+  padding:7px 2px!important;
+  color:var(--wine)!important;
+  font-size:14px!important;
+  font-weight:700!important;
+  line-height:1.3!important;
+  text-decoration:none!important;
+}
+
+.cob-native .cob-hero {
+  position:relative!important;
+  display:block!important;
+  overflow:hidden!important;
+  margin:0 0 18px!important;
+  padding:46px 38px!important;
+  border:0!important;
+  border-radius:18px!important;
+  background:var(--wine)!important;
+  color:#fff!important;
+  box-shadow:0 12px 32px rgba(91,0,23,.14)!important;
+}
+
+.cob-native .cob-hero::after {
+  content:""!important;
+  position:absolute!important;
+  display:block!important;
+  width:180px!important;
+  height:180px!important;
+  right:-80px!important;
+  top:-90px!important;
+  border:38px solid rgba(242,140,40,.13)!important;
+  border-radius:50%!important;
+}
+
+.cob-native .cob-kicker {
+  position:relative!important;
+  z-index:1!important;
+  display:block!important;
+  margin:0 0 8px!important;
+  color:#ffc27f!important;
+  font-size:12px!important;
+  font-weight:700!important;
+  line-height:1.4!important;
+  letter-spacing:1.5px!important;
+  text-transform:uppercase!important;
+}
+
+.cob-native .cob-hero h1 {
+  position:relative!important;
+  z-index:1!important;
+  display:block!important;
+  margin:0!important;
+  padding:0!important;
+  color:#fff!important;
+  font-family:Georgia,"Times New Roman",serif!important;
+  font-size:clamp(32px,6vw,50px)!important;
+  font-weight:700!important;
+  line-height:1.12!important;
+}
+
+.cob-native .cob-lead {
+  position:relative!important;
+  z-index:1!important;
+  display:block!important;
+  max-width:690px!important;
+  margin:12px 0 0!important;
+  color:#f6e9ec!important;
+  font-size:17px!important;
+  line-height:1.65!important;
+}
+
+.cob-native .cob-grid {
+  display:grid!important;
+  grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  gap:14px!important;
+  width:100%!important;
+  margin:14px 0!important;
+  padding:0!important;
+}
+
+.cob-native .cob-grid.cob-grid-3 {
+  grid-template-columns:repeat(3,minmax(0,1fr))!important;
+}
+
+.cob-native .cob-card {
+  position:relative!important;
+  display:block!important;
+  width:auto!important;
+  min-width:0!important;
+  margin:0!important;
+  padding:27px 25px 24px!important;
+  border:1px solid var(--line)!important;
+  border-top:3px solid var(--orange)!important;
+  border-radius:15px!important;
+  background:var(--paper)!important;
+  color:var(--ink)!important;
+  text-decoration:none!important;
+  box-shadow:0 4px 15px rgba(62,34,38,.045)!important;
+}
+
+.cob-native .cob-card h2,
+.cob-native .cob-card h3,
+.cob-native .cob-section h2 {
+  display:block!important;
+  margin:0 0 8px!important;
+  padding:0!important;
+  color:var(--wine)!important;
+  font-family:Georgia,"Times New Roman",serif!important;
+  font-weight:700!important;
+  line-height:1.28!important;
+}
+
+.cob-native .cob-card h3 {font-size:22px!important;margin-bottom:7px!important;}
+.cob-native .cob-card p {
+  display:block!important;
+  margin:0!important;
+  color:var(--muted)!important;
+  font-size:15px!important;
+  line-height:1.55!important;
+}
+
+.cob-native .cob-section {
+  display:block!important;
+  width:100%!important;
+  margin:14px 0!important;
+  padding:26px!important;
+  border:1px solid var(--line)!important;
+  border-radius:15px!important;
+  background:var(--paper)!important;
+}
+
+.cob-native .cob-section h2 {font-size:25px!important;}
+.cob-native .cob-section p {display:block!important;margin:0 0 13px!important;}
+.cob-native .cob-note {
+  border-left:4px solid var(--orange)!important;
+  background:#fff8ef!important;
+}
+
+.cob-native .cob-actions {
+  display:flex!important;
+  flex-wrap:wrap!important;
+  gap:10px!important;
+  margin-top:18px!important;
+}
+
+.cob-native .cob-button {
+  display:inline-block!important;
+  padding:12px 20px!important;
+  border-radius:9px!important;
+  background:var(--wine)!important;
+  color:#fff!important;
+  font-weight:700!important;
+  text-align:center!important;
+  text-decoration:none!important;
+}
+
+.cob-native a:focus-visible {outline:3px solid var(--orange)!important;outline-offset:4px!important;}
+
+@media(max-width:700px) {
+  .cob-native {padding:12px 8px 30px!important;}
+  .cob-native .cob-hero {padding:34px 22px!important;border-radius:14px!important;}
+  .cob-native .cob-grid,
+  .cob-native .cob-grid.cob-grid-3 {grid-template-columns:1fr!important;}
+  .cob-native .cob-card,
+  .cob-native .cob-section {padding:20px!important;}
+  .cob-native .cob-actions {display:grid!important;}
+  .cob-native .cob-button {width:100%!important;}
+}
+
+@media(prefers-reduced-motion:reduce) {
+  .cob-native a.cob-card {transition:none!important;}
+  .cob-native a.cob-card:hover {transform:none!important;}
+}
