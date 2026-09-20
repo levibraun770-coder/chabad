@@ -1,14 +1,15 @@
 {
-  "updatedAt": "2026-09-13T07:30:14.927Z",
+  "updatedAt": "2026-09-20T07:46:38.839Z",
   "candles": {
-    "date": "2026-09-18T18:59:00+02:00"
+    "date": "2026-09-20T18:56:00+02:00"
   },
-  "parashat": {
-    "title": "Parashat Ha’azinu",
-    "date": "2026-09-19",
-    "hdate": "8 Tishrei 5787"
-  },
+  "parashat": null,
   "havdalah": {
-    "date": "2026-09-13T20:13:00+02:00"
+    "date": "2026-09-21T19:57:00+02:00"
+  },
+  "holiday": {
+    "title": "Yom Kippur",
+    "date": "2026-09-21",
+    "hdate": "10 Tishrei 5787"
   }
 }
