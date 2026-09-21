@@ -248,3 +248,7 @@ body:has(.cob-page) #co_menu_container{background:#5b0017!important;box-shadow:0
 body:has(.cob-page) #co_menu_container .co_menu_item>a{color:#fff!important;font-size:14px!important;font-weight:700!important;letter-spacing:.02em!important}
 body:has(.cob-page) #co_menu_container .co_menu_item.selected>a,body:has(.cob-page) #co_menu_container .co_menu_item>a:hover{color:#ffc27f!important}
 @media(max-width:700px){body:has(.cob-page) #header .header-wrapper{padding-left:16px!important;padding-right:16px!important}body:has(.cob-page) #header_branding .site-logo-wrapper img{width:42px!important;height:42px!important}body:has(.cob-page) #header_branding .site_title{font-size:17px!important}}
+
+/* Keep the burgundy navigation readable on converted pages. */
+body:has(.cob-page) #co_menu_container a{color:#fff!important;text-shadow:none!important}
+body:has(.cob-page) #co_menu_container .co_menu_item.selected a{color:#ffc27f!important}
