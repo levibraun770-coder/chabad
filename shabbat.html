@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="css/site.css?v=20260823-5" />
   <style type="text/css">
     html,body{margin:0;padding:0;background:#f7f4ef}
-    .cob-times{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:24px;position:relative;z-index:1}
+    .cob-times{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin-top:24px;position:relative;z-index:1}
     .cob-time{padding:18px 12px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.25);border-radius:13px;text-align:center}
     .cob-time-label{margin-bottom:3px;color:#f6d7c0;font-size:12px;font-weight:700;letter-spacing:.7px;text-transform:uppercase}
     .cob-time-value{color:#fff;font:700 29px/1.2 Georgia,"Times New Roman",serif}
@@ -59,6 +59,11 @@
       prayer: "We would be happy to pray for you or your loved ones while we are there.",
       buttonText: "Send a Name for Prayer",
       buttonUrl: "https://wa.me/393498347528?text=Hello%2C%20I%20would%20like%20to%20send%20a%20name%20for%20prayer%20during%20your%20visit%20to%20the%20Rebbe."
+    },
+    "2026-10-02": {
+      label: "A Note for This Shabbat",
+      heading: "No Communal Meals or Services This Week",
+      message: "There will be no communal meals or services at Chabad of Bologna this week."
     }
   };
 
@@ -149,6 +154,44 @@
     return friday.day + " " + friday.month + " &ndash; " + saturday.day + " " + saturday.month + " " + saturday.year;
   }
 
+  function holidayDisplayName(title) {
+    return String(title || "Holiday")
+      .replace(/\s+(?:I|II|III|IV|V|VI|VII|VIII)$/i, "")
+      .replace(/\s+\(CH.*\)$/i, "");
+  }
+
+  function ordinalNightLabel(index) {
+    var labels = ["Second-Night Candles", "Third-Night Candles"];
+    return labels[index] || "Additional Candle Lighting";
+  }
+
+  function timeCardsHtml(candles, additionalCandles, havdalah, isHoliday) {
+    var cards = [
+      '<div class="cob-time">',
+        '<div class="cob-time-label">Candle Lighting</div>',
+        '<div class="cob-time-value">', escapeHtml(displayTime(candles.date)), '</div>',
+      '</div>'
+    ];
+    var i;
+
+    for (i = 0; i < additionalCandles.length; i += 1) {
+      cards.push(
+        '<div class="cob-time">',
+          '<div class="cob-time-label">', escapeHtml(ordinalNightLabel(i)), '</div>',
+          '<div class="cob-time-value">', escapeHtml(displayTime(additionalCandles[i].date)), '</div>',
+        '</div>'
+      );
+    }
+
+    cards.push(
+      '<div class="cob-time">',
+        '<div class="cob-time-label">', isHoliday ? 'Holiday Ends' : 'Shabbat Ends', '</div>',
+        '<div class="cob-time-value">', escapeHtml(displayTime(havdalah.date)), '</div>',
+      '</div>'
+    );
+    return cards.join("");
+  }
+
   function romeDateKey(dateValue) {
     var parts = new Intl.DateTimeFormat("en-CA", {
       year: "numeric",
@@ -232,32 +275,42 @@
   }
 
   function specialScheduleHtml(special) {
-    return [
+    var html = [
       '<section class="cob-section cob-visit-note cob-centered">',
         '<p class="cob-kicker">', escapeHtml(special.label), '</p>',
         '<h2>', escapeHtml(special.heading), '</h2>',
-        '<p>', escapeHtml(special.message), '</p>',
-        '<p class="cob-prayer-line">', escapeHtml(special.prayer), '</p>',
+        '<p>', escapeHtml(special.message), '</p>'
+    ];
+
+    if (special.prayer) {
+      html.push('<p class="cob-prayer-line">', escapeHtml(special.prayer), '</p>');
+    }
+    if (special.buttonText && special.buttonUrl) {
+      html.push(
         '<div class="cob-actions" style="justify-content:center;">',
           '<a class="cob-button cob-button-accent" href="', escapeHtml(special.buttonUrl), '" rel="noopener noreferrer" target="_blank">', escapeHtml(special.buttonText), '</a>',
-        '</div>',
-      '</section>'
-    ].join("");
+        '</div>'
+      );
+    }
+    html.push('</section>');
+    return html.join("");
   }
 
   function renderWeek(data) {
     var items = data && data.items ? data.items : [];
     var candles = data && data.candles ? data.candles : null;
+    var additionalCandles = data && data.additionalCandles ? data.additionalCandles : [];
     var parashat = data && data.parashat ? data.parashat : null;
     var holiday = data && data.holiday ? data.holiday : null;
     var havdalah = data && data.havdalah ? data.havdalah : null;
     var i;
 
     for (i = 0; i < items.length; i += 1) {
-      if (items[i].category === "candles") { candles = items[i]; }
-      if (items[i].category === "parashat") { parashat = items[i]; }
-      if (items[i].category === "holiday" && !/^Erev\b/i.test(items[i].title || "")) { holiday = items[i]; }
-      if (items[i].category === "havdalah") { havdalah = items[i]; }
+      if (items[i].category === "candles" && !candles) { candles = items[i]; }
+      if (items[i].category === "candles" && candles && items[i] !== candles) { additionalCandles.push(items[i]); }
+      if (items[i].category === "parashat" && !parashat) { parashat = items[i]; }
+      if (items[i].category === "holiday" && items[i].yomtov === true && !/^Erev\b/i.test(items[i].title || "") && !holiday) { holiday = items[i]; }
+      if (items[i].category === "havdalah" && !havdalah) { havdalah = items[i]; }
     }
 
     if (!candles || !havdalah || (!parashat && !holiday)) {
@@ -265,9 +318,9 @@
     }
 
     var fridayKey = localDateKey(candles.date);
-    var heading = parashat
-      ? "Shabbat Parshat " + String(parashat.title || "This Week").replace(/^Parashat\s+/i, "")
-      : String(holiday.title || "Holiday Shabbat");
+    var heading = holiday
+      ? holidayDisplayName(holiday.title) + " & Shabbat"
+      : "Shabbat Parshat " + String(parashat.title || "This Week").replace(/^Parashat\s+/i, "");
     var special = specialWeeks[fridayKey];
     var schedule = special ? specialScheduleHtml(special) : normalScheduleHtml(weeklySchedules[fridayKey]);
 
@@ -282,14 +335,7 @@
           displayHebrewRange(candles.date, havdalah.date),
         '</p>',
         '<div class="cob-times">',
-          '<div class="cob-time">',
-            '<div class="cob-time-label">Candle Lighting</div>',
-            '<div class="cob-time-value">', escapeHtml(displayTime(candles.date)), '</div>',
-          '</div>',
-          '<div class="cob-time">',
-            '<div class="cob-time-label">Shabbat Ends</div>',
-            '<div class="cob-time-value">', escapeHtml(displayTime(havdalah.date)), '</div>',
-          '</div>',
+          timeCardsHtml(candles, additionalCandles, havdalah, Boolean(holiday)),
         '</div>',
       '</section>',
       schedule,
