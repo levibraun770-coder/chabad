@@ -1,15 +1,15 @@
 {
-  "updatedAt": "2026-09-20T07:46:38.839Z",
+  "updatedAt": "2026-09-27T08:16:52.900Z",
   "candles": {
-    "date": "2026-09-20T18:56:00+02:00"
+    "date": "2026-10-02T18:33:00+02:00"
   },
   "parashat": null,
   "havdalah": {
-    "date": "2026-09-21T19:57:00+02:00"
+    "date": "2026-09-27T19:46:00+02:00"
   },
   "holiday": {
-    "title": "Yom Kippur",
-    "date": "2026-09-21",
-    "hdate": "10 Tishrei 5787"
+    "title": "Sukkot II",
+    "date": "2026-09-27",
+    "hdate": "16 Tishrei 5787"
   }
 }
