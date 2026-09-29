@@ -1,7 +1,726 @@
-/* Chabad of Bologna — shared custom-page design system */
+/* Chabad of Bologna — shared site design system */
 .sites-article:has(.cob-page) .article-header,.sites-article:has(.cob-page) #co_ads_container,.sites-article:has(.cob-page) .content-footer,.sites-article:has(.cob-page) .local-navigation-quick-links{display:none!important}
 .sites-article:has(.cob-page) #co_body_container,.sites-article:has(.cob-page) #cco_body,.sites-article:has(.cob-page) #cco_body>.content,.sites-article:has(.cob-page) .content-area-parent{width:100%!important;max-width:none!important;float:none!important;margin:0!important}
 .sites-article:has(.cob-page) .body_wrapper.co_body{width:100%!important;max-width:none!important}
 .cob-page,.cob-page *{box-sizing:border-box}.cob-page{--wine:#5b0017;--wine2:#760b29;--orange:#f28c28;--cream:#f7f4ef;--paper:#fff;--ink:#2e2526;--muted:#706568;--line:#e8ded2;font-family:Arial,Helvetica,sans-serif;color:var(--ink);background:var(--cream);margin:0;padding:24px 16px 42px;line-height:1.65}.cob-shell{max-width:920px;margin:0 auto}.cob-parent-nav{margin:0 0 12px}.cob-parent-link{display:inline-flex;align-items:center;min-height:40px;padding:7px 2px;color:var(--wine)!important;font-size:14px;font-weight:700;line-height:1.3;text-decoration:none!important}.cob-parent-link:hover{text-decoration:underline!important;text-decoration-color:var(--orange)!important;text-underline-offset:4px}.cob-hero{position:relative;overflow:hidden;background:var(--wine);color:#fff;border-radius:18px;padding:46px 38px;margin-bottom:18px;box-shadow:0 12px 32px rgba(91,0,23,.14)}.cob-hero:after{content:"";position:absolute;width:180px;height:180px;border:38px solid rgba(242,140,40,.13);border-radius:50%;right:-80px;top:-90px}.cob-kicker{margin:0 0 8px;color:#ffc27f;font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase}.cob-page h1{position:relative;z-index:1;margin:0;color:#fff;font:700 clamp(32px,6vw,50px)/1.12 Georgia,"Times New Roman",serif}.cob-lead{position:relative;z-index:1;max-width:690px;margin:12px 0 0;color:#f6e9ec;font-size:17px;line-height:1.65}.cob-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:14px 0}.cob-grid-3{grid-template-columns:repeat(3,minmax(0,1fr))}.cob-card{position:relative;display:block;background:var(--paper);border:1px solid var(--line);border-top:3px solid var(--orange);border-radius:15px;padding:27px 25px 24px;color:var(--ink)!important;text-decoration:none!important;box-shadow:0 4px 15px rgba(62,34,38,.045)}a.cob-card{transition:transform .18s ease,border-color .18s ease,box-shadow .18s ease}a.cob-card:hover{transform:translateY(-2px);border-color:#d4ad8a;border-top-color:var(--wine);box-shadow:0 9px 24px rgba(62,34,38,.09)}.cob-card h2,.cob-card h3,.cob-section h2{margin:0 0 8px;color:var(--wine);font-family:Georgia,"Times New Roman",serif;line-height:1.28}.cob-card h2,.cob-section h2{font-size:25px}.cob-card h3{font-size:22px;margin-bottom:7px}.cob-card p{margin:0;color:var(--muted);font-size:15px;line-height:1.55}.cob-icon{display:none!important}.cob-link{display:inline-block;margin-top:17px;padding-bottom:2px;border-bottom:1px solid #d9b28d;color:var(--wine);font-size:14px;font-weight:700}.cob-section{background:var(--paper);border:1px solid var(--line);border-radius:15px;padding:26px;margin:14px 0}.cob-section p{margin:0 0 13px}.cob-section p:last-child{margin-bottom:0}.cob-note{background:#fff8ef;border-left:4px solid var(--orange)}.cob-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}.cob-button{display:inline-block;padding:12px 20px;border-radius:9px;background:var(--wine);color:#fff!important;font-weight:700;text-align:center;text-decoration:none!important}.cob-button:hover{background:var(--wine2)}.cob-button-accent{background:var(--orange);color:#351c0c!important}.cob-button-accent:hover{background:#df7920}.cob-page a:not(.cob-button):not(.cob-card){color:var(--wine)!important;text-decoration-color:var(--orange)!important;text-decoration-thickness:2px;text-underline-offset:3px}.cob-page a:not(.cob-button):not(.cob-card):visited{color:var(--wine)!important}.cob-page a:not(.cob-button):not(.cob-card):hover{color:var(--wine2)!important;text-decoration-color:var(--wine)!important}.cob-page img{max-width:100%;height:auto}
 @media(max-width:700px){.cob-page{padding:12px 8px 30px}.cob-hero{padding:34px 22px;border-radius:14px}.cob-grid,.cob-grid-3{grid-template-columns:1fr}.cob-card,.cob-section{padding:20px}.cob-actions{display:grid}.cob-button{width:100%}}
 @media print{.cob-page{background:#fff;padding:0}.cob-hero,.cob-card,.cob-section{box-shadow:none}}
+
+/* =========================================================
+   CHABAD OF BOLOGNA — NATIVE FORM DESIGN SYSTEM
+   ========================================================= */
+
+html.cob-native-form {
+    --cob-wine: #5b0017;
+    --cob-wine2: #760b29;
+    --cob-orange: #f28c28;
+    --cob-cream: #f7f4ef;
+    --cob-paper: #ffffff;
+    --cob-ink: #2e2526;
+    --cob-muted: #706568;
+    --cob-line: #e8ded2;
+    --cob-note: #fff8ef;
+}
+
+/* =========================================================
+   SHARED PAGE
+   ========================================================= */
+
+html.cob-native-form,
+html.cob-native-form body,
+html.cob-native-form #BodyContainer,
+html.cob-native-form #BodyContainer .body_wrapper {
+    background: var(--cob-cream) !important;
+}
+
+html.cob-native-form body {
+    color: var(--cob-ink) !important;
+    font-family: Arial, Helvetica, sans-serif !important;
+}
+
+/* Gray ב״ה */
+
+html.cob-native-form #BodyContainer > .body_wrapper::before,
+html.cob-native-form #BodyContainer > .body_wrapper:before {
+    content: none !important;
+    display: none !important;
+}
+
+html.cob-native-form #BodyContainer .bh,
+html.cob-native-form #BodyContainer div.bh,
+html.cob-native-form .bh.mobile-only,
+html.cob-native-form .mobile-only.align_right.bh {
+    display: none !important;
+    visibility: hidden !important;
+    width: 0 !important;
+    height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+}
+
+/* =========================================================
+   SHARED FORM CONTROLS
+   ========================================================= */
+
+html.cob-native-form #BodyContainer form {
+    color: var(--cob-ink) !important;
+    font-family: Arial, Helvetica, sans-serif !important;
+}
+
+html.cob-native-form #BodyContainer form input[type="text"],
+html.cob-native-form #BodyContainer form input[type="email"],
+html.cob-native-form #BodyContainer form input[type="tel"],
+html.cob-native-form #BodyContainer form input[type="number"],
+html.cob-native-form #BodyContainer form input[type="password"],
+html.cob-native-form #BodyContainer form input[type="url"],
+html.cob-native-form #BodyContainer form select,
+html.cob-native-form #BodyContainer form textarea {
+    box-sizing: border-box !important;
+    max-width: 100% !important;
+    min-height: 44px !important;
+
+    padding: 10px 12px !important;
+
+    background: #ffffff !important;
+    color: var(--cob-ink) !important;
+
+    border: 1px solid #ddd3ca !important;
+    border-radius: 8px !important;
+
+    font-family: Arial, Helvetica, sans-serif !important;
+    font-size: 15px !important;
+    line-height: 1.35 !important;
+
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+html.cob-native-form #BodyContainer form textarea {
+    min-height: 120px !important;
+}
+
+html.cob-native-form #BodyContainer form input:focus,
+html.cob-native-form #BodyContainer form select:focus,
+html.cob-native-form #BodyContainer form textarea:focus {
+    border-color: var(--cob-wine) !important;
+    box-shadow: 0 0 0 3px rgba(91,0,23,.07) !important;
+}
+
+html.cob-native-form #BodyContainer input[type="checkbox"],
+html.cob-native-form #BodyContainer input[type="radio"] {
+    accent-color: var(--cob-wine) !important;
+}
+
+/* Buttons */
+
+html.cob-native-form #BodyContainer form input[type="submit"],
+html.cob-native-form #BodyContainer form input[type="button"],
+html.cob-native-form #BodyContainer form button,
+html.cob-native-form #BodyContainer form .button,
+html.cob-native-form #BodyContainer form .btn {
+    box-sizing: border-box !important;
+
+    background: var(--cob-wine) !important;
+    color: #ffffff !important;
+
+    border: 0 !important;
+    border-radius: 8px !important;
+
+    padding: 11px 20px !important;
+
+    font-family: Arial, Helvetica, sans-serif !important;
+    font-size: 14px !important;
+    font-weight: 700 !important;
+
+    text-decoration: none !important;
+    box-shadow: none !important;
+    cursor: pointer !important;
+}
+
+html.cob-native-form #BodyContainer form input[type="submit"]:hover,
+html.cob-native-form #BodyContainer form input[type="button"]:hover,
+html.cob-native-form #BodyContainer form button:hover,
+html.cob-native-form #BodyContainer form .button:hover,
+html.cob-native-form #BodyContainer form .btn:hover {
+    background: var(--cob-wine2) !important;
+}
+
+/* Links */
+
+html.cob-native-form #BodyContainer a,
+html.cob-native-form #BodyContainer a:visited {
+    color: var(--cob-wine) !important;
+    text-decoration-color: var(--cob-orange) !important;
+    text-underline-offset: 3px !important;
+}
+
+/* =========================================================
+   CONTACT
+   ========================================================= */
+
+html.cob-contact-form #BodyContainer h1 {
+    color: var(--cob-wine) !important;
+    font-family: Georgia, "Times New Roman", serif !important;
+    font-size: clamp(34px,6vw,46px) !important;
+    line-height: 1.12 !important;
+}
+
+html.cob-contact-form #BodyContainer form {
+    box-sizing: border-box !important;
+
+    background: var(--cob-paper) !important;
+
+    border: 1px solid var(--cob-line) !important;
+    border-radius: 15px !important;
+
+    padding: 26px !important;
+
+    box-shadow: 0 4px 15px rgba(62,34,38,.045) !important;
+}
+
+/* =========================================================
+   DONATE
+   Intentionally a little more distinct
+   ========================================================= */
+
+html.cob-donate-form #BodyContainer h1 {
+    color: var(--cob-wine) !important;
+    font-family: Georgia, "Times New Roman", serif !important;
+    font-size: clamp(32px,5.5vw,44px) !important;
+    line-height: 1.13 !important;
+}
+
+html.cob-donate-form #BodyContainer form {
+    background: transparent !important;
+}
+
+/* =========================================================
+   EVENT REGISTRATION — COMPLETE DESIGN
+   ========================================================= */
+
+/*
+ * Neutralize ChabadOne's blue-gray page/form wrappers.
+ */
+
+html.cob-event-form .cob-event-neutral-shell,
+html.cob-event-form #BodyContainer form,
+html.cob-event-form #BodyContainer form > div,
+html.cob-event-form #BodyContainer form > section,
+html.cob-event-form #BodyContainer form > table {
+    background-color: transparent !important;
+}
+
+/* ---------------------------------------------------------
+   Compact event title
+   --------------------------------------------------------- */
+
+html.cob-event-form .cob-old-event-title {
+    display: none !important;
+    visibility: hidden !important;
+    height: 0 !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+}
+
+html.cob-event-form .cob-event-heading-block {
+    box-sizing: border-box !important;
+
+    width: calc(100% - 32px) !important;
+    max-width: 920px !important;
+
+    margin: 20px auto 24px !important;
+    padding: 0 !important;
+
+    background: transparent !important;
+}
+
+html.cob-event-form .cob-event-registration-kicker {
+    margin: 0 0 7px !important;
+
+    color: var(--cob-orange) !important;
+
+    font-family: Arial, Helvetica, sans-serif !important;
+    font-size: 12px !important;
+    font-weight: 700 !important;
+    line-height: 1.2 !important;
+
+    letter-spacing: 1.4px !important;
+    text-transform: uppercase !important;
+}
+
+html.cob-event-form .cob-event-heading-block h1 {
+    margin: 0 !important;
+    padding: 0 !important;
+
+    color: var(--cob-wine) !important;
+
+    font-family: Georgia, "Times New Roman", serif !important;
+    font-size: clamp(34px,6vw,48px) !important;
+    font-weight: 700 !important;
+    line-height: 1.12 !important;
+    letter-spacing: -.4px !important;
+
+    background: transparent !important;
+}
+
+/* ---------------------------------------------------------
+   Section headings
+   --------------------------------------------------------- */
+
+html.cob-event-form .cob-event-section-title {
+    margin: 0 0 14px !important;
+
+    color: var(--cob-wine) !important;
+
+    font-family: Georgia, "Times New Roman", serif !important;
+    font-size: 25px !important;
+    font-weight: 700 !important;
+    line-height: 1.25 !important;
+}
+
+/* ---------------------------------------------------------
+   Event information
+   --------------------------------------------------------- */
+
+html.cob-event-form .cob-event-info-card {
+    box-sizing: border-box !important;
+
+    margin: 0 0 18px !important;
+    padding: 22px 24px !important;
+
+    background: var(--cob-paper) !important;
+
+    border: 1px solid var(--cob-line) !important;
+    border-radius: 15px !important;
+
+    box-shadow: 0 4px 15px rgba(62,34,38,.04) !important;
+}
+
+html.cob-event-form .cob-event-info-card * {
+    border-color: var(--cob-line) !important;
+}
+
+html.cob-event-form .cob-event-duplicate-name {
+    display: none !important;
+}
+
+/* ---------------------------------------------------------
+   Reservations section
+   --------------------------------------------------------- */
+
+html.cob-event-form .cob-event-reservations-section {
+    box-sizing: border-box !important;
+
+    margin: 0 0 18px !important;
+    padding: 0 !important;
+
+    background: transparent !important;
+
+    border: 0 !important;
+    box-shadow: none !important;
+}
+
+html.cob-event-form .cob-event-reservations-section > * {
+    border-color: var(--cob-line) !important;
+}
+
+/*
+ * Individual reservation card.
+ */
+
+html.cob-event-form .cob-reservation-card {
+    box-sizing: border-box !important;
+
+    margin: 0 0 12px !important;
+    padding: 20px !important;
+
+    background: var(--cob-paper) !important;
+
+    border: 1px solid var(--cob-line) !important;
+    border-radius: 14px !important;
+
+    box-shadow: 0 3px 12px rgba(62,34,38,.035) !important;
+}
+
+/*
+ * Count select.
+ */
+
+html.cob-event-form .cob-reservation-count {
+    min-height: 44px !important;
+
+    background: #ffffff !important;
+
+    border: 1px solid #ddd3ca !important;
+    border-radius: 8px !important;
+
+    color: var(--cob-ink) !important;
+}
+
+/*
+ * Guest First Name / Last Name.
+ */
+
+html.cob-event-form .cob-reservation-guest-input {
+    box-sizing: border-box !important;
+
+    width: 100% !important;
+    max-width: none !important;
+
+    min-height: 44px !important;
+    height: 44px !important;
+
+    margin: 0 !important;
+    padding: 10px 12px !important;
+
+    background: #ffffff !important;
+    color: var(--cob-ink) !important;
+
+    border: 1px solid #ddd3ca !important;
+    border-radius: 8px !important;
+
+    font-family: Arial, Helvetica, sans-serif !important;
+    font-size: 15px !important;
+    line-height: 1.35 !important;
+
+    box-shadow: none !important;
+}
+
+html.cob-event-form .cob-reservation-guest-input:focus {
+    border-color: var(--cob-wine) !important;
+    box-shadow: 0 0 0 3px rgba(91,0,23,.07) !important;
+}
+
+html.cob-event-form .cob-reservation-guest-field {
+    box-sizing: border-box !important;
+    max-width: 100% !important;
+}
+
+/*
+ * Remove reservation button.
+ */
+
+html.cob-event-form #BodyContainer .cob-remove-reservation {
+    display: inline-flex !important;
+
+    width: 42px !important;
+    min-width: 42px !important;
+    height: 42px !important;
+    min-height: 42px !important;
+
+    padding: 0 !important;
+
+    align-items: center !important;
+    justify-content: center !important;
+
+    background: var(--cob-wine) !important;
+    color: #ffffff !important;
+
+    border: 0 !important;
+    border-radius: 8px !important;
+
+    font-size: 23px !important;
+    line-height: 1 !important;
+
+    box-shadow: none !important;
+}
+
+/*
+ * Add additional reservation.
+ */
+
+html.cob-event-form #BodyContainer .cob-add-reservation {
+    display: inline-flex !important;
+
+    margin-top: 6px !important;
+    padding: 9px 14px !important;
+
+    align-items: center !important;
+
+    background: transparent !important;
+    color: var(--cob-wine) !important;
+
+    border: 1px solid #d8beb0 !important;
+    border-radius: 8px !important;
+
+    font-size: 13px !important;
+    font-weight: 700 !important;
+
+    text-decoration: none !important;
+    box-shadow: none !important;
+}
+
+html.cob-event-form #BodyContainer .cob-add-reservation:hover {
+    background: var(--cob-note) !important;
+    border-color: var(--cob-orange) !important;
+}
+
+/* ---------------------------------------------------------
+   Your Information
+   --------------------------------------------------------- */
+
+html.cob-event-form .cob-event-yourinfo-card {
+    box-sizing: border-box !important;
+
+    margin: 0 0 18px !important;
+    padding: 22px 24px !important;
+
+    background: var(--cob-paper) !important;
+
+    border: 1px solid var(--cob-line) !important;
+    border-radius: 15px !important;
+
+    box-shadow: 0 4px 15px rgba(62,34,38,.04) !important;
+}
+
+/* ---------------------------------------------------------
+   Generic table/form cleanup
+   --------------------------------------------------------- */
+
+html.cob-event-form #BodyContainer form table {
+    max-width: 100% !important;
+    border-color: var(--cob-line) !important;
+}
+
+html.cob-event-form #BodyContainer form td,
+html.cob-event-form #BodyContainer form th {
+    border-color: var(--cob-line) !important;
+}
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media only screen and (max-width:650px) {
+
+    html.cob-event-form .cob-event-heading-block {
+        width: calc(100% - 32px) !important;
+        margin-top: 14px !important;
+        margin-bottom: 20px !important;
+    }
+
+    html.cob-event-form .cob-event-heading-block h1 {
+        font-size: 34px !important;
+    }
+
+    html.cob-event-form .cob-event-info-card,
+    html.cob-event-form .cob-event-yourinfo-card {
+        padding: 19px !important;
+        border-radius: 13px !important;
+    }
+
+    html.cob-event-form .cob-reservation-card {
+        padding: 17px !important;
+        border-radius: 13px !important;
+    }
+
+    html.cob-event-form .cob-reservation-guest-field {
+        display: block !important;
+
+        width: 100% !important;
+        max-width: none !important;
+
+        margin: 0 0 10px !important;
+
+        float: none !important;
+    }
+
+    html.cob-event-form .cob-reservation-guest-input {
+        display: block !important;
+
+        width: 100% !important;
+        max-width: none !important;
+
+        font-size: 16px !important;
+    }
+
+    html.cob-native-form #BodyContainer form input[type="text"],
+    html.cob-native-form #BodyContainer form input[type="email"],
+    html.cob-native-form #BodyContainer form input[type="tel"],
+    html.cob-native-form #BodyContainer form input[type="number"],
+    html.cob-native-form #BodyContainer form select,
+    html.cob-native-form #BodyContainer form textarea {
+        font-size: 16px !important;
+    }
+}
+
+/* Contact Us page cleanup */
+html.cob-contact-form #LocalNavigationQuickLinks,
+html.cob-contact-form .page-tools-sidebar {
+    display: none !important;
+}
+
+html.cob-contact-form #comment {
+    height: 150px !important;
+    min-height: 150px !important;
+}
+
+/* Ask the Rabbi page cleanup */
+html.cob-ask-rabbi-form .article-header .breadcrumbs,
+html.cob-ask-rabbi-form #co_ads_container,
+html.cob-ask-rabbi-form .page-tools-sidebar {
+    display: none !important;
+}
+
+html.cob-ask-rabbi-form .article-header {
+    box-sizing: border-box !important;
+    padding-bottom: 18px !important;
+}
+
+html.cob-ask-rabbi-form .article-header h1 {
+    margin: 0 !important;
+    color: var(--cob-wine) !important;
+    font-family: Georgia, "Times New Roman", serif !important;
+    font-size: clamp(34px,6vw,46px) !important;
+    line-height: 1.12 !important;
+}
+
+html.cob-ask-rabbi-form #co_body_container {
+    box-sizing: border-box !important;
+    width: 100% !important;
+    max-width: 900px !important;
+    margin: 0 auto !important;
+    float: none !important;
+}
+
+html.cob-ask-rabbi-form .cob-ask-card,
+html.cob-ask-rabbi-form .cob-ask-topics {
+    box-sizing: border-box !important;
+    margin: 0 0 24px !important;
+    overflow: hidden !important;
+    background: var(--cob-paper) !important;
+    border: 1px solid var(--cob-line) !important;
+    border-radius: 15px !important;
+    box-shadow: 0 4px 15px rgba(62,34,38,.045) !important;
+}
+
+html.cob-ask-rabbi-form .cob-ask-card .b_inside,
+html.cob-ask-rabbi-form .cob-ask-topics .b_inside {
+    background: transparent !important;
+    border: 0 !important;
+}
+
+html.cob-ask-rabbi-form .cob-ask-card .b_header {
+    display: none !important;
+}
+
+html.cob-ask-rabbi-form #AskTheRabbi_Div {
+    box-sizing: border-box !important;
+    padding: 26px !important;
+    color: var(--cob-ink) !important;
+}
+
+html.cob-ask-rabbi-form #AskTheRabbi_Div .ATR_text:first-child {
+    margin: 0 0 18px !important;
+    color: var(--cob-muted) !important;
+    line-height: 1.5 !important;
+}
+
+html.cob-ask-rabbi-form #AskTheRabbi_Div #comment {
+    height: 150px !important;
+    min-height: 150px !important;
+}
+
+html.cob-ask-rabbi-form #AskTheRabbi_Div label,
+html.cob-ask-rabbi-form #AskTheRabbi_Div .co_global_label {
+    color: var(--cob-ink) !important;
+    font-weight: 600 !important;
+}
+
+html.cob-ask-rabbi-form .cob-ask-topics .b_header {
+    padding: 15px 22px !important;
+    background: var(--cob-wine) !important;
+    color: #ffffff !important;
+    border: 0 !important;
+    font-family: Georgia, "Times New Roman", serif !important;
+    font-size: 20px !important;
+    font-weight: 700 !important;
+}
+
+html.cob-ask-rabbi-form .cob-ask-topics .co_form_container {
+    padding: 22px 24px 0 !important;
+}
+
+html.cob-ask-rabbi-form .cob-ask-topics .keyword-columns {
+    box-sizing: border-box !important;
+    margin: 0 !important;
+    padding: 22px 24px 26px !important;
+}
+
+@media only screen and (max-width:650px) {
+    html.cob-ask-rabbi-form #co_body_container {
+        padding: 0 16px !important;
+    }
+
+    html.cob-ask-rabbi-form .cob-ask-card,
+    html.cob-ask-rabbi-form .cob-ask-topics {
+        border-radius: 13px !important;
+    }
+
+    html.cob-ask-rabbi-form #AskTheRabbi_Div {
+        padding: 19px !important;
+    }
+
+    html.cob-ask-rabbi-form #AskTheRabbi_Div .col-sm-6 {
+        width: 100% !important;
+        float: none !important;
+    }
+
+    html.cob-ask-rabbi-form .cob-ask-topics .co_form_container {
+        padding: 18px 18px 0 !important;
+    }
+
+    html.cob-ask-rabbi-form .cob-ask-topics .keyword-columns {
+        padding: 18px !important;
+    }
+}
+
+/* Ask the Rabbi mobile full-width fields */
+@media only screen and (max-width:650px) {
+    html.cob-ask-rabbi-form #AskTheRabbi_Div .bs-container,
+    html.cob-ask-rabbi-form #AskTheRabbi_Div .bs-row,
+    html.cob-ask-rabbi-form #AskTheRabbi_Div #InputFieldsArea,
+    html.cob-ask-rabbi-form #AskTheRabbi_Div #AskCell,
+    html.cob-ask-rabbi-form #AskTheRabbi_Div .col-sm-6 {
+        box-sizing: border-box !important;
+        width: 100% !important;
+        max-width: none !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        float: none !important;
+    }
+
+    html.cob-ask-rabbi-form #AskTheRabbi_Div .bs-row.ATR_text {
+        display: block !important;
+    }
+
+    html.cob-ask-rabbi-form #AskTheRabbi_Div input[type="text"],
+    html.cob-ask-rabbi-form #AskTheRabbi_Div input[type="email"],
+    html.cob-ask-rabbi-form #AskTheRabbi_Div textarea {
+        width: 100% !important;
+    }
+}
+
+/* Ask the Rabbi alignment with the shared form system */
+html.cob-ask-rabbi-form .cob-ask-card,
+html.cob-ask-rabbi-form .cob-ask-topics {
+    width: 100% !important;
+    max-width: none !important;
+}
+
+html.cob-ask-rabbi-form #AskTheRabbi_Div label,
+html.cob-ask-rabbi-form #AskTheRabbi_Div .co_global_label {
+    color: var(--cob-orange) !important;
+    font-weight: 400 !important;
+}
+
+html.cob-ask-rabbi-form .cob-ask-topics .b_header {
+    background: var(--cob-paper) !important;
+    color: var(--cob-wine) !important;
+    border-bottom: 3px solid var(--cob-orange) !important;
+}
