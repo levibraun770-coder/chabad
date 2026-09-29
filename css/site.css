@@ -724,3 +724,11 @@ html.cob-ask-rabbi-form .cob-ask-topics .b_header {
     color: var(--cob-wine) !important;
     border-bottom: 3px solid var(--cob-orange) !important;
 }
+
+/* Ask the Rabbi full-width native wrapper */
+html.cob-ask-rabbi-form .ask_the_rabbi {
+    box-sizing: border-box !important;
+    width: 100% !important;
+    max-width: none !important;
+    float: none !important;
+}
