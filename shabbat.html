@@ -86,6 +86,13 @@
     }
   };
 
+  /*
+   * Add a note only for a week that differs from the regular schedule.
+   * This can be a student-only dinner or a public RSVP, but neither is
+   * assumed for every Shabbat.
+   */
+  var weeklyNotices = {};
+
   function escapeHtml(value) {
     return String(value || "")
       .replace(/&/g, "&amp;")
@@ -256,37 +263,47 @@
       fridayLocation: "Chabad House",
       shabbatServices: "09:30",
       shabbatLunch: "12:30",
-      shabbatLocation: "Synagogue",
+      shabbatLocation: "Jewish Community",
       communityUrl: "https://www.comunitaebraicabologna.it/en/"
     };
     return [
-      '<section class="cob-section cob-note cob-centered">',
-        '<h2>Shabbat Meals for Students</h2>',
-        '<p>Friday night dinner and Shabbat lunch are exclusively for university students. Advance registration is required.</p>',
-        '<div class="cob-actions" style="justify-content:center;">',
-          '<a class="cob-button cob-button-accent" href="https://levibraun770-coder.github.io/chabad/student-portal.html" target="_top">Student Portal</a>',
-        '</div>',
-      '</section>',
       '<div class="cob-grid">',
         '<section class="cob-card">',
-          '<h2>Friday Night</h2>',
+          '<h2>Friday Night at Chabad</h2>',
           '<table class="cob-schedule" role="presentation"><tbody>',
             '<tr><td class="cob-schedule-time">', escapeHtml(details.fridayKabbalat), '</td><td>Kabbalat Shabbat<div class="cob-small">', escapeHtml(details.fridayLocation), '</div></td></tr>',
-            '<tr><td class="cob-schedule-time">', escapeHtml(details.fridayDinner) || '&nbsp;', '</td><td>Student Shabbat Dinner<div class="cob-small">Following Kabbalat Shabbat &middot; ', escapeHtml(details.fridayLocation), '</div></td></tr>',
+            '<tr><td class="cob-schedule-time">', escapeHtml(details.fridayDinner) || '&nbsp;', '</td><td>Shabbat Dinner<div class="cob-small">Following Kabbalat Shabbat &middot; ', escapeHtml(details.fridayLocation), '</div></td></tr>',
           '</tbody></table>',
         '</section>',
         '<section class="cob-card">',
-          '<h2>Shabbat Day</h2>',
+          '<h2>Shabbat Day at the Jewish Community</h2>',
           '<table class="cob-schedule" role="presentation"><tbody>',
             '<tr><td class="cob-schedule-time">', escapeHtml(details.shabbatServices), '</td><td>Shacharit<div class="cob-small">', escapeHtml(details.shabbatLocation), '</div></td></tr>',
-            '<tr><td class="cob-schedule-time">', escapeHtml(details.shabbatLunch), '</td><td>Student Shabbat Lunch<div class="cob-small">', escapeHtml(details.shabbatLocation), '</div></td></tr>',
+            '<tr><td class="cob-schedule-time">', escapeHtml(details.shabbatLunch), '</td><td>Shabbat Lunch<div class="cob-small">', escapeHtml(details.shabbatLocation), '</div></td></tr>',
           '</tbody></table>',
           '<div class="cob-actions">',
-            '<a class="cob-button" href="', escapeHtml(details.communityUrl), '" rel="noopener noreferrer" target="_blank">Jewish Community Website</a>',
+            '<a class="cob-button" href="', escapeHtml(details.communityUrl), '" rel="noopener noreferrer" target="_blank">Jewish Community Information</a>',
           '</div>',
         '</section>',
       '</div>'
     ].join("");
+  }
+
+  function weeklyNoticeHtml(notice) {
+    var html = [
+      '<section class="cob-section cob-note cob-centered">',
+        '<h2>', escapeHtml(notice.heading), '</h2>',
+        '<p>', escapeHtml(notice.message), '</p>'
+    ];
+    if (notice.buttonText && notice.buttonUrl) {
+      html.push(
+        '<div class="cob-actions" style="justify-content:center;">',
+          '<a class="cob-button cob-button-accent" href="', escapeHtml(notice.buttonUrl), '" rel="noopener noreferrer" target="_top">', escapeHtml(notice.buttonText), '</a>',
+        '</div>'
+      );
+    }
+    html.push('</section>');
+    return html.join("");
   }
 
   function upcomingScheduleHtml(currentFriday) {
@@ -298,12 +315,12 @@
           '<h3>Shabbat</h3>',
           '<p class="cob-upcoming-date">', displayDateKeyRange(addDaysToDateKey(currentFriday, i * 7)), '</p>',
           '<table class="cob-schedule" role="presentation"><tbody>',
-            '<tr><td class="cob-schedule-time">19:30</td><td>Kabbalat Shabbat</td></tr>',
-            '<tr><td class="cob-schedule-time">&nbsp;</td><td>Student Shabbat Dinner<div class="cob-small">Following Kabbalat Shabbat</div></td></tr>',
-            '<tr><td class="cob-schedule-time">09:30</td><td>Shacharit</td></tr>',
-            '<tr><td class="cob-schedule-time">12:30</td><td>Student Shabbat Lunch</td></tr>',
+            '<tr><td class="cob-schedule-time">19:30</td><td>Kabbalat Shabbat<div class="cob-small">Chabad House</div></td></tr>',
+            '<tr><td class="cob-schedule-time">&nbsp;</td><td>Shabbat Dinner<div class="cob-small">Following Kabbalat Shabbat &middot; Chabad House</div></td></tr>',
+            '<tr><td class="cob-schedule-time">09:30</td><td>Shacharit<div class="cob-small">Jewish Community</div></td></tr>',
+            '<tr><td class="cob-schedule-time">12:30</td><td>Shabbat Lunch<div class="cob-small">Jewish Community</div></td></tr>',
           '</tbody></table>',
-          '<p class="cob-small" style="margin:14px 0 0;">Meals are exclusively for university students. Please check this page before Shabbat for any change.</p>',
+          '<p class="cob-small" style="margin:14px 0 0;">Please check this page before Shabbat for any week-specific information.</p>',
         '</article>'
       );
     }
@@ -311,7 +328,7 @@
       '<section class="cob-upcoming">',
         '<div class="cob-upcoming-intro">',
           '<h2>Upcoming Shabbat Schedule</h2>',
-          '<p>These are the regular times for the coming weeks.</p>',
+          '<p>Regular times for the coming weeks.</p>',
         '</div>',
         '<div class="cob-upcoming-grid">', cards.join(""), '</div>',
       '</section>'
@@ -366,6 +383,7 @@
       ? holidayDisplayName(holiday.title) + " & Shabbat"
       : "Shabbat Parshat " + String(parashat.title || "This Week").replace(/^Parashat\s+/i, "");
     var special = specialWeeks[fridayKey];
+    var notice = weeklyNotices[fridayKey];
     var schedule = special ? specialScheduleHtml(special) : normalScheduleHtml(weeklySchedules[fridayKey]);
 
     content.className = "";
@@ -383,6 +401,7 @@
         '</div>',
       '</section>',
       schedule,
+      !special && notice ? weeklyNoticeHtml(notice) : "",
       upcomingScheduleHtml(fridayKey),
       '<section class="cob-section cob-centered"><h2 style="margin:0;">Shabbat Shalom!</h2></section>'
     ].join("");
