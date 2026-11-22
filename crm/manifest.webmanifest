@@ -1,0 +1,10 @@
+{
+  "name": "Chabad Regional CRM",
+  "short_name": "Chabad CRM",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#FAF6EF",
+  "theme_color": "#8F173E",
+  "description": "Household-first operational CRM for Chabad of Bologna and Emilia-Romagna."
+}
